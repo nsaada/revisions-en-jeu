@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Révisions en jeu</title>
+    <style>
+      :root{--ink:#28334a;--muted:#68748a;--paper:#fff9ed;--card:#fff;--purple:#6654c8;--mint:#e5f5e9;--yellow:#ffda70;--pink:#ffe7e7;--line:#e9e5dc;--shadow:0 12px 32px #33415512}
+      *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}[hidden]{display:none!important}.shell{max-width:1050px;padding:0 22px;margin:auto}.top{padding:15px 0;border-bottom:1px solid var(--line);background:#fff}.top-inner{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-weight:850;font-size:19px}.brand span{color:var(--purple)}.btn{border:0;border-radius:12px;padding:11px 16px;font-weight:800}.primary{background:var(--purple);color:white}.secondary{background:#f1effa;color:var(--purple)}.btn:disabled{opacity:.5;cursor:default}.gate{min-height:100vh;padding:30px 20px 50px}.gate-head{max-width:1050px;margin:0 auto 28px}.gate-title{font-size:clamp(34px,6vw,54px);line-height:1.08;letter-spacing:-1.5px;margin:18px 0 9px}.gate-title em{color:var(--purple);font-style:normal}.gate-intro{color:var(--muted);font-size:18px;margin:0}.login-grid{max-width:900px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:white;border:1px solid var(--line);border-radius:20px;padding:23px;box-shadow:var(--shadow)}.card h2,.card h3{margin:0 0 13px}.field{margin:12px 0}.field label{display:block;font-weight:750;margin-bottom:5px}.field input,.field select{width:100%;padding:11px 12px;border:1px solid #d9d5e5;border-radius:10px;background:#fff;color:var(--ink)}.notice{background:#f2f0ff;border-radius:12px;padding:12px 14px;color:#51459f;font-size:14px;margin:14px 0}.error{color:#a83232;font-weight:700;min-height:22px;margin:8px 0}.success{color:#257441;font-weight:700;min-height:22px;margin:8px 0}.small{font-size:13px;color:var(--muted)}.top-actions{display:flex;align-items:center;gap:10px}.identity{font-weight:750}.hero{padding:45px 0 26px;display:grid;grid-template-columns:1fr 190px;gap:26px;align-items:center}.tag{text-transform:uppercase;color:var(--purple);font-weight:800;letter-spacing:1.3px;font-size:12px}h1{font-size:clamp(38px,7vw,62px);line-height:1.04;letter-spacing:-2px;margin:10px 0 13px}h1 em{color:var(--purple);font-style:normal}.hero p{color:var(--muted);font-size:18px;max-width:650px;margin:0}.mascot{border-radius:28px;background:var(--yellow);text-align:center;padding:22px;transform:rotate(2deg);box-shadow:var(--shadow)}.mascot b{font-size:66px;line-height:1}.mascot div{font-weight:800;margin-top:8px}.scorebar{display:flex;align-items:center;gap:13px;max-width:500px;margin-top:18px;color:var(--muted);font-size:14px}.lesson-count{background:#fff;padding:7px 11px;border-radius:10px;color:var(--ink)}.subjects{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:12px 0 18px}.subject{border:1px solid var(--line);background:#fff;padding:12px 9px;border-radius:15px;color:var(--ink);font-weight:750;box-shadow:0 3px 12px #22334408}.subject.active{background:var(--purple);color:white;border-color:var(--purple)}.subject span{display:block;font-size:23px}.levelbar{display:flex;align-items:center;gap:12px;margin:0 0 18px;padding:13px 16px;background:#f0edff;border-radius:15px;font-weight:750}.levelbar select{font:inherit;border:1px solid #c9c2ed;border-radius:10px;background:white;padding:8px 12px;color:var(--ink)}.panel{background:white;border:1px solid var(--line);border-radius:24px;padding:clamp(20px,4vw,36px);box-shadow:var(--shadow);min-height:330px}.panelhead{display:flex;gap:14px;align-items:center;margin-bottom:22px}.icon{font-size:38px}.panel h2{font-size:27px;line-height:1.2;margin:0}.panelhead p{margin:4px 0 0;color:var(--muted)}.prompt{font-size:clamp(22px,4vw,30px);font-weight:800;line-height:1.3;margin:26px 0}.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer{background:#f7f6fb;border:2px solid transparent;border-radius:14px;text-align:left;padding:15px;font-weight:700;color:var(--ink)}.answer:hover{border-color:#b7afea;background:#f2f0ff}.answer:disabled{cursor:default}.answer.correct{background:var(--mint);border-color:#7cbd8b}.answer.wrong{background:var(--pink);border-color:#eea2a2}.feedback{font-size:17px;font-weight:800;min-height:30px;margin:17px 0;color:#257441}.feedback.wrong{color:#b34747}.actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:20px}.hint{color:var(--muted);font-size:13px}.action-buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.hint-box{background:#fff8e1;border-left:5px solid var(--yellow);border-radius:12px;padding:10px 14px;margin:14px 0 0;font-weight:700}.answer.eliminated{opacity:.35;text-decoration:line-through}.photo img{max-width:100%;max-height:360px;border-radius:14px;box-shadow:var(--shadow);display:block;margin:auto}.photo figcaption{font-size:14px;font-weight:700;margin-top:6px}.photo figcaption small{display:block;font-weight:400;color:var(--muted);font-size:11px}.done{text-align:center;padding:20px}.done .star{font-size:64px}.done h2{margin:8px}.done p{color:var(--muted)}.result-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:18px}.recap{text-align:left;display:grid;gap:10px;margin:24px 0}.review{padding:14px 16px;border-radius:12px;background:#f7f6fb;border-left:4px solid #aaa}.review-ok{background:#eff8f0;border-color:#54a66d}.review-no{background:#fff1ef;border-color:#df7770}.review p{margin:7px 0 3px}.review small{color:var(--muted)}.empty{text-align:center;padding:30px 15px}.empty .icon{font-size:58px}.empty p{color:var(--muted);max-width:600px;margin:10px auto 18px}.footer{text-align:center;padding:24px;color:var(--muted);font-size:13px}.loading{text-align:center;padding:70px 15px;font-weight:800;color:var(--purple)}.admin-wrap{max-width:1120px;margin:auto;padding:35px 22px 60px}.admin-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:22px}.admin-heading h1{font-size:38px;letter-spacing:-1px;margin:5px 0}.admin-heading p{margin:0;color:var(--muted)}.admin-grid{display:grid;grid-template-columns:minmax(280px,.8fr) minmax(0,1.4fr);gap:18px;align-items:start}.subject-picker{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:10px 0 16px;max-height:310px;overflow:auto}.subject-choice{display:flex;gap:8px;align-items:center;background:#f8f7fc;border-radius:10px;padding:8px;font-weight:650;font-size:14px}.subject-choice input{accent-color:var(--purple)}.profile-cards{display:grid;gap:14px}.profile-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:var(--shadow)}.profile-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.profile-head h2{margin:0;font-size:23px}.badge{display:inline-block;border-radius:99px;background:#f0edff;padding:4px 10px;color:var(--purple);font-weight:750;font-size:12px}.metrics{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.metric{background:#f7f6fb;border-radius:10px;padding:8px 11px;font-size:14px}.progress-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:9px 0 16px}.progress-item{background:#fbfafc;border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:13px}.progress-item strong{display:block}.recent-list{padding-left:20px;margin:7px 0 16px;color:var(--muted);font-size:13px}.recent-list li{margin:4px 0}.admin-import{display:flex;gap:8px;align-items:end;flex-wrap:wrap}.admin-import select{min-width:200px}.manage-status{font-size:13px;font-weight:700;min-height:20px;margin:8px 0 0}.section-title{margin:17px 0 7px;font-size:16px}.divider{height:1px;background:var(--line);margin:16px 0}.profile-workspace{display:grid;gap:14px}.profile-switcher{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:16px 20px}.profile-switcher .field{flex:1;min-width:220px;margin:0}.danger-zone{border-top:1px solid #f1c9c9;margin-top:14px;padding-top:12px}.danger-zone summary{font-weight:800;color:#a83232;cursor:pointer}.danger{background:#fbe3e3;color:#a83232}.course-h{color:var(--purple);font-size:18px;margin:18px 0 6px}#lessonBody p,.lesson-rich p{margin:6px 0}#lessonBody ul,.lesson-rich ul{margin:6px 0 10px;padding-left:22px}.course-box{border-radius:14px;padding:10px 14px;margin:12px 0;border-left:5px solid}.course-box.keep{background:#eaf7ee;border-color:#54a66d}.course-box.example{background:#eaf2ff;border-color:#5b8def}.course-box.warn{background:#fff4e5;border-color:#f0a23b}.sch-grid{stroke:#e6e2f3;stroke-width:1}.sch-axis{stroke:var(--ink);stroke-width:2}.sch-seg{stroke:var(--purple);stroke-width:3}.sch-wire{stroke:var(--ink);stroke-width:3;fill:none;stroke-linecap:round}.sch-wire.thin{stroke-width:2}.sch-wire.thick{stroke-width:6}.sch-comp{fill:#fff;stroke:var(--ink);stroke-width:3}.sch-erase{fill:#fff}.sch-land{fill:#eef6ea;stroke:#6b8f62;stroke-width:2;stroke-linejoin:round}.sch-river{stroke:#4f8fd9;stroke-width:2.5;fill:none;stroke-linejoin:round}.schema text.sch-river-name{fill:#2f6db5;font-size:12px;font-style:italic}.sch-mount{fill:#b9895a}.course-box.define{background:#f2f0ff;border-color:var(--purple)}.course-box.tip{background:#fff8e1;border-color:var(--yellow)}#lessonBody strong,#courseContent strong,.preview-course strong{color:#5543b8}.part-practice{margin:10px 0 18px;text-align:right}.part-practice .btn{font-size:14px;padding:9px 14px}mark.hl{background:linear-gradient(transparent 45%,#ffe08a 45%);color:inherit;font-weight:750;padding:0 2px;border-radius:3px}.course-box mark.hl{background:linear-gradient(transparent 45%,#ffd45c 45%)}.star-burst{position:fixed;pointer-events:none;z-index:60;width:0;height:0}.star-burst span{position:absolute;left:0;top:0;font-size:22px;transform:translate(-50%,-50%);animation:burst .9s ease-out forwards}@keyframes burst{0%{opacity:1;transform:translate(-50%,-50%) scale(.4)}70%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.2) rotate(var(--rot))}}@media(prefers-reduced-motion:reduce){.star-burst{display:none}}.schema{margin:14px auto;text-align:center}.schema svg{width:100%;height:auto;display:block;margin:auto}.sch-fill{fill:#8f7ff0;stroke:#fff;stroke-width:2}.sch-empty{fill:#efedf9;stroke:#fff;stroke-width:2}.sch-line{stroke:var(--ink);stroke-width:2;fill:none}.sch-line.thick{stroke-width:4}.sch-ink{fill:var(--ink)}.sch-dot{fill:#e2574c;stroke:#fff;stroke-width:2}.sch-shape{fill:#f2f0ff;stroke:var(--purple);stroke-width:3}.sch-clock{fill:#fffdf5;stroke:var(--ink);stroke-width:3}.sch-hand{stroke:var(--ink);stroke-width:3;stroke-linecap:round}.sch-hand.hour{stroke-width:5}.schema text{fill:var(--ink);font-family:inherit}.sch-small{font-size:13px}.sch-label{font-size:15px;font-weight:800}.sch-year{font-size:15px;font-weight:800;fill:var(--purple)!important}.sch-big{font-size:20px;font-weight:800}.table-wrap{overflow-x:auto}.sch-table{border-collapse:collapse;margin:auto;font-size:14px;min-width:60%}.sch-table th{background:var(--purple);color:#fff;padding:7px 10px}.sch-table td{border:1px solid var(--line);padding:6px 10px;background:#fff}.sch-table tr:nth-child(even) td{background:#f8f7fc}.flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px}.flow-step{background:#f2f0ff;border:2px solid #c9c2ed;border-radius:12px;padding:7px 11px;font-weight:700;font-size:14px}.flow-step b{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--purple);color:#fff;font-size:12px;margin-right:6px}.flow-step.back{background:#fff;border-style:dashed;font-weight:600}.flow-arrow{font-size:20px;color:var(--purple);font-weight:900}.type-badge{display:inline-block;border-radius:99px;background:#f0edff;color:var(--purple);font-weight:800;font-size:12px;padding:2px 9px}.streak{display:inline-block;border-radius:99px;background:#fff1e0;color:#c2620c;font-weight:800;font-size:12px;padding:2px 9px}.progress-track{height:8px;background:#efedf9;border-radius:99px;overflow:hidden;margin:-8px 0 8px}.progress-track span{display:block;height:100%;background:linear-gradient(90deg,#8f7ff0,#6654c8);border-radius:99px}.answers.vf .answer{text-align:center;font-size:19px}.typed{display:flex;gap:10px;flex-wrap:wrap}.typed input{flex:1;min-width:200px;font-size:20px;padding:13px 15px;border:2px solid #c9c2ed;border-radius:14px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.chip{border:2px solid #c9c2ed;background:#fff;border-radius:12px;padding:10px 14px;font-weight:700;color:var(--ink)}.chip:disabled{opacity:.35}.order-list{min-height:44px;background:#f7f6fb;border:2px dashed #c9c2ed;border-radius:14px;padding:10px 10px 10px 34px;margin:8px 0;font-weight:700}.order-list li{margin:3px 0}.row-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.match{display:grid;gap:8px}.match-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center;background:#f7f6fb;border-radius:12px;padding:8px 12px;font-weight:700}.match-row select{padding:9px;border:1px solid #c9c2ed;border-radius:10px;font:inherit;background:#fff}.scale{background:#f7f6fb;border-radius:14px;padding:16px}.scale input{width:100%;accent-color:var(--purple)}.scale-value{display:block;text-align:center;font-size:30px;font-weight:900;color:var(--purple)}.scale-ends{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}.body-ok{outline:3px solid #7cbd8b;border-radius:14px}.body-wrong{outline:3px solid #eea2a2;border-radius:14px}.good-answer{color:#2f7a45;font-weight:800;margin:4px 0}.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}.confetti span{position:absolute;top:-40px;font-size:26px;animation:fall linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}@media(prefers-reduced-motion:reduce){.confetti{display:none}}@media(max-width:720px){.match-row{grid-template-columns:1fr}}.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;padding:6px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.admin-tab{flex:1;min-width:150px;border:0;border-radius:11px;padding:11px 14px;background:transparent;color:var(--ink);font-weight:800}.admin-tab:hover{background:#f1effa}.admin-tab.active{background:var(--purple);color:#fff}.admin-view{display:grid;gap:14px}#adminProfileBar{margin-bottom:14px}.preview-course{background:#fbfafc;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:10px 0 14px;font-size:14px;max-height:420px;overflow:auto}.preview-level{border-top:1px solid var(--line);padding:10px 0}.preview-level summary{font-weight:800;color:var(--purple);cursor:pointer}.preview-question{margin:10px 0 0;font-size:14px}.preview-question ol{margin:4px 0;padding-left:22px}.preview-question li.good{color:#2f7a45;font-weight:800}.preview-question .small{display:block}.dash{grid-column:1/-1;background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px 18px;box-shadow:var(--shadow)}.dash-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-bottom:12px}.dash-streak{font-size:20px;font-weight:900;color:#c2620c}.dash-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}.dash-card{text-align:left;border:2px solid #e3dff6;background:#f8f7fd;border-radius:16px;padding:12px 14px;color:var(--ink)}.dash-card b{display:block;font-size:17px}.dash-card span{display:block;font-size:14px;color:var(--muted);margin-top:2px}.dash-card:hover:not(:disabled){border-color:var(--purple);background:#f1effa}.dash-card.defi{background:#fff8e1;border-color:#ffe08a}.dash-card:disabled{opacity:.6;cursor:default}.dash-tips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.dash-tip{border:0;background:#eef6ea;color:#2f6b3a;border-radius:99px;padding:7px 12px;font-weight:700;font-size:14px}.speak-btn{margin:0 0 10px;font-size:14px;padding:8px 12px}.search-row{display:flex;gap:10px;align-items:end;flex-wrap:wrap;margin:6px 0}.search-row .field{flex:1;min-width:240px;margin:0}.search-scope{display:flex;gap:6px;align-items:center;font-size:14px;font-weight:650;padding-bottom:12px}.search-results{display:grid;gap:8px;max-height:360px;overflow:auto;margin:6px 0 14px}.search-result{text-align:left;border:1px solid var(--line);background:#fbfafc;border-radius:12px;padding:10px 12px;color:var(--ink)}.search-result:hover{border-color:#b7afea;background:#f2f0ff}.search-snippet{display:block;font-size:13px;color:var(--muted);margin-top:4px}mark.search-hit{background:#ffe08a;color:inherit;border-radius:3px;padding:0 1px}.other-subjects{grid-column:1/-1;margin-top:4px}.other-subjects summary{font-weight:700;color:var(--purple);cursor:pointer;font-size:14px}.other-subjects .subject-picker{margin-top:8px}.empty-progress{color:var(--muted);font-size:14px}.footer{border-top:1px solid var(--line)}
+      .field textarea{width:100%;resize:vertical;padding:11px 12px;border:1px solid #d9d5e5;border-radius:10px;background:#fff;color:var(--ink);font:inherit}.module-panel{margin:0 0 18px;padding:20px}.module-controls{display:grid;grid-template-columns:1fr 190px;gap:12px}.module-controls .field{margin:0 0 12px}.course-box{background:#fbfafc;border:1px solid var(--line);border-radius:14px;padding:16px}.course-box h2{font-size:23px;margin:4px 0 10px}.course-text{white-space:pre-wrap;color:#45516a}.module-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px}.module-list{display:grid;gap:7px;margin-top:12px}.module-list-item{background:#f8f7fc;border-radius:10px;padding:9px 11px;font-size:13px}.module-list-item strong{display:block}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.profile-edit{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.profile-edit summary{font-weight:800;color:var(--purple);cursor:pointer}.edit-subjects{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;max-height:240px;overflow:auto}.edit-subject-choice{display:flex;gap:7px;align-items:center;background:#f8f7fc;border-radius:9px;padding:7px;font-size:13px}.edit-subject-choice input{accent-color:var(--purple)}
+      @media(max-width:720px){.login-grid,.admin-grid{grid-template-columns:1fr}.hero{grid-template-columns:1fr;padding-top:35px}.mascot{display:none}.subjects{grid-template-columns:repeat(3,1fr)}.answers{grid-template-columns:1fr}.actions{align-items:stretch}.actions .btn{flex:1}.hint{display:none}.scorebar{flex-wrap:wrap}.module-controls,.form-row,.edit-subjects,.progress-grid{grid-template-columns:1fr}.module-footer{align-items:stretch;flex-direction:column}.top-inner,.admin-heading{align-items:flex-start;flex-direction:column}.top-actions{width:100%;justify-content:space-between}.admin-wrap{padding-top:25px}}
+    </style>
+    <style>
+      .mode-home{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:8px 0 28px}.mode-card{display:block;width:100%;text-align:left;padding:25px;border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:var(--shadow);color:var(--ink)}.mode-card:hover,.lesson-card:hover{border-color:#b7afea;transform:translateY(-2px)}.mode-card .mode-icon{font-size:42px}.mode-card h2{margin:6px 0;font-size:25px}.mode-card p{margin:0;color:var(--muted)}.view-toolbar{display:flex;align-items:center;gap:12px;margin:12px 0}.view-toolbar h2{margin:0}.course-heading{margin:8px 0 14px}.course-heading h2{margin:0 0 4px}.course-heading p{margin:0;color:var(--muted)}.lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0 22px}.lesson-card{display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-height:150px;text-align:left;padding:17px;border:1px solid var(--line);border-radius:16px;background:white;color:var(--ink);box-shadow:0 3px 12px #22334408;transition:transform .15s,border-color .15s}.lesson-card strong{font-size:17px}.lesson-card span{color:var(--muted);font-size:14px}.lesson-card small{margin-top:auto;color:var(--purple);font-weight:750}.lesson-content{margin:14px 0 24px}.lesson-content h2{margin:5px 0 8px}.lesson-copy{margin:18px 0;padding:clamp(18px,3vw,30px);background:white;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);font-size:17px;line-height:1.8;white-space:pre-wrap}.lesson-actions{display:flex;gap:10px;flex-wrap:wrap}.view-back{margin:0 0 10px}.course-empty{margin:14px 0;padding:18px;border-radius:14px;background:#fff}.quiz-small-course{margin-top:10px}.quiz-small-course .course-text{font-size:14px}.quiz-small-course .tag{color:#7469ad}
+      @media(max-width:720px){.mode-home{grid-template-columns:1fr}.lesson-grid{grid-template-columns:1fr 1fr}.view-toolbar{align-items:flex-start;flex-direction:column}}
+      @media(max-width:460px){.lesson-grid{grid-template-columns:1fr}}
+    </style>
+    <style>
+      /* Lot 2-3 : thèmes, couleurs de matière, maîtrise, récompenses, compagnon, animations, mobile */
+      body[data-theme="ocean"]{--paper:#eef7fb;--purple:#1f7fa8;--yellow:#bfe6f5;--mint:#e2f4f1}
+      body[data-theme="foret"]{--paper:#f1f7ec;--purple:#2f7d4a;--yellow:#d5ecb8;--mint:#e3f3df}
+      body[data-theme="coucher"]{--paper:#fff3ea;--purple:#d0533a;--yellow:#ffd2a8;--mint:#ffe9dc}
+      body[data-theme="galaxie"]{--paper:#efecff;--purple:#4b32b5;--yellow:#d8cfff;--mint:#e6e1ff}
+      .subject{border-top:4px solid var(--subject,var(--line));position:relative}
+      .subject.active{background:var(--subject,var(--purple));border-color:var(--subject,var(--purple))}
+      .subject-bar{display:block;height:5px;margin:7px 6px 0;border-radius:4px;background:#0000001a;overflow:hidden}
+      .subject-bar i{display:block;height:100%;background:var(--subject,var(--purple))}
+      .subject.active .subject-bar{background:#ffffff55}.subject.active .subject-bar i{background:#fff}
+      #courseModulesPanel{background:color-mix(in srgb,var(--subject,#fff) 6%,#fff);border-top:5px solid var(--subject,var(--line))}
+      .lesson-card{border-left:6px solid var(--subject,var(--purple))}
+      .mastery{font-size:14px;letter-spacing:1px;color:#b78a00;white-space:nowrap}.mastery .off{color:#cfc9bd}
+      #courseLessonPanel .tag{background:var(--subject,var(--purple));color:#fff}
+      #modulePanel{border-top:5px solid var(--subject,var(--line))}
+      #game .panelhead{border-bottom:4px solid var(--subject,transparent);padding-bottom:12px}
+      #game .panelhead .icon{background:color-mix(in srgb,var(--subject,#eee) 18%,#fff)}
+      .scorebar{max-width:720px;flex-wrap:wrap}.scorebar b,.scorebar .lesson-count{white-space:nowrap}.rewards-open{padding:7px 12px;font-size:14px}
+      .icon-btn{padding:7px 11px;font-size:14px}
+      .rw-head{display:flex;gap:18px;align-items:center;margin:4px 0 18px}.rw-avatar{font-size:64px;line-height:1;background:var(--yellow);border-radius:24px;padding:14px;box-shadow:var(--shadow)}
+      .rw-section{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px 18px;margin:0 0 16px;box-shadow:var(--shadow)}
+      .rw-section h3{margin:0 0 10px}
+      .rw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:10px}
+      .rw-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 6px;border:2px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);font-weight:700;font-size:14px}
+      .rw-item .big{font-size:38px;line-height:1.1}.rw-item.chosen{border-color:var(--purple);background:var(--mint)}
+      .rw-item:disabled{opacity:.55;cursor:not-allowed;filter:grayscale(.8)}
+      .swatch{width:46px;height:30px;border-radius:9px;border:1px solid #0002}
+      .badge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+      .badge{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:#f7f6fb;border:1px solid var(--line)}
+      .badge b{font-size:30px}.badge.locked{opacity:.5;filter:grayscale(1)}.badge small{display:block;color:var(--muted)}
+      .map-subject{margin:0 0 14px}.map-subject h4{margin:0 0 6px;display:flex;justify-content:space-between;gap:10px}
+      .map-tiles{display:flex;flex-wrap:wrap;gap:6px}
+      .map-tile{width:34px;height:34px;border-radius:9px;border:1px solid #0001;background:#eceae4;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;cursor:pointer}
+      .map-tile.l1{background:color-mix(in srgb,var(--subject) 35%,#fff)}.map-tile.l2{background:color-mix(in srgb,var(--subject) 65%,#fff)}.map-tile.l3{background:var(--subject)}
+      .new-badges{margin:16px auto 0;max-width:460px;padding:12px 14px;border-radius:16px;background:var(--yellow);font-weight:800;animation:pop .5s ease both}
+      .new-badges div{margin:4px 0}.done .mastery-line{margin-top:10px;font-weight:700}
+      .buddy{position:fixed;right:18px;bottom:18px;display:flex;align-items:flex-end;gap:8px;z-index:40;pointer-events:none}
+      .buddy-face{font-size:52px;line-height:1;filter:drop-shadow(0 6px 10px #0002)}
+      .buddy-bubble{max-width:230px;background:#fff;border:2px solid var(--purple);border-radius:16px 16px 4px 16px;padding:9px 12px;font-weight:700;font-size:14px;box-shadow:var(--shadow)}
+      .buddy.show{animation:buddyIn .35s ease both}.buddy.happy .buddy-face{animation:hop .6s ease}.buddy.sad .buddy-face{animation:wobble .6s ease}
+      #game.q-enter>*{animation:qIn .35s ease both}
+      .answer.correct{animation:pop .35s ease}.answer.wrong,.body-wrong{animation:shake .4s ease}
+      @keyframes qIn{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+      @keyframes pop{0%{transform:scale(.9)}60%{transform:scale(1.06)}100%{transform:scale(1)}}
+      @keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+      @keyframes buddyIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+      @keyframes hop{0%,100%{transform:none}40%{transform:translateY(-16px) rotate(-8deg)}}
+      @keyframes wobble{0%,100%{transform:none}30%{transform:rotate(-12deg)}70%{transform:rotate(10deg)}}
+      @media(prefers-reduced-motion:reduce){#game.q-enter>*,.answer.correct,.answer.wrong,.body-wrong,.buddy.show,.buddy-face,.new-badges{animation:none!important}}
+      @media(max-width:720px){
+        .top-inner{flex-wrap:wrap;gap:8px}.top-actions{flex-wrap:wrap;gap:8px}
+        .btn,.answer,.subject,.dash-card,.rw-item{min-height:46px}
+        .subjects{grid-template-columns:repeat(2,1fr)}
+        .schema{overflow-x:auto;max-width:100%}.schema svg,.schema img,.lesson-copy img{max-width:100%;height:auto}
+        .table-wrap{overflow-x:auto}
+        .rw-grid{grid-template-columns:repeat(3,1fr)}.badge-grid{grid-template-columns:1fr}
+        .rewards-open{width:100%}
+        .buddy{right:8px;bottom:8px}.buddy-face{font-size:38px}.buddy-bubble{max-width:180px;font-size:13px}
+        #game .actions{position:sticky;bottom:0;background:#fff;padding:10px 0;margin-bottom:-10px;z-index:5}
+      }
+      @media(min-width:721px) and (max-width:1024px){.subjects{grid-template-columns:repeat(4,1fr)}.answers{gap:12px}}
+    </style>
+    <style>
+      /* Lot 4 : fiche « À retenir » et cartes mémoire */
+      .sheet-toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 16px}
+      .sheet-toolbar .btn.active{background:var(--purple);color:#fff}
+      .sheet{background:#fff;border:1px solid var(--line);border-top:6px solid var(--subject,var(--purple));border-radius:18px;padding:22px 26px;box-shadow:var(--shadow);max-width:900px;margin:0 auto 20px}
+      .sheet-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;border-bottom:2px solid var(--line);padding-bottom:10px;margin-bottom:14px}
+      .sheet-head h2{margin:2px 0 0;font-size:26px;line-height:1.2}
+      .sheet-subject{font-weight:800;color:var(--subject,var(--purple));text-transform:uppercase;font-size:13px;letter-spacing:.5px}
+      .sheet-meta{text-align:right;color:var(--muted);font-size:13px}
+      .sheet-keep{background:color-mix(in srgb,var(--subject,#ffda70) 12%,#fff);border:2px solid var(--subject,var(--yellow));border-radius:14px;padding:6px 16px;margin-bottom:14px}
+      .sheet-keep .course-box{background:none;border:0;padding:0;margin:0}
+      .sheet-parts{columns:2 340px;column-gap:24px}
+      .sheet-part{break-inside:avoid;margin:0 0 14px}
+      .sheet-part h3{font-size:17px;margin:0 0 6px;color:var(--subject,var(--ink))}
+      .sheet-part ul{margin:0 0 6px;padding-left:20px}.sheet-part li{margin:2px 0}
+      .sheet-part .course-box{padding:8px 12px;margin:6px 0;font-size:14px}.sheet-part .schema{margin:6px auto;transform-origin:top center}
+      .sheet-part .schema svg{max-height:220px}.sheet .table-wrap{overflow:visible}.sheet .sch-table{width:100%;table-layout:fixed}.sheet .sch-table th,.sheet .sch-table td{padding:4px 3px;font-size:11px;word-break:break-word}
+      .sheet-check{border-top:2px dashed var(--line);margin-top:10px;padding-top:10px;break-inside:avoid}
+      .sheet-check h3{margin:0 0 6px}.sheet-check ol{margin:0;padding-left:22px}.sheet-check li{margin:0 0 8px}
+      .sheet-choices{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:14px;color:var(--muted)}
+      .sheet-line{border-bottom:1px dotted #999;height:20px;max-width:320px}
+      .sheet-answers{font-size:12px;color:var(--muted);transform:rotate(180deg);text-align:center;margin-top:12px}
+      .print-only{display:none}.done-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+      .cards-play{max-width:620px;margin:0 auto}
+      .cards-progress{text-align:center;color:var(--muted);font-weight:700;margin-bottom:10px}
+      .flip{perspective:1200px;cursor:pointer;outline:none}
+      .flip-inner{position:relative;display:grid;transition:transform .5s;transform-style:preserve-3d}
+      .flip.flipped .flip-inner{transform:rotateY(180deg)}
+      .flip-face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:26px;border-radius:22px;background:#fff;border:3px solid var(--subject,var(--purple));box-shadow:var(--shadow)}
+      .flip-back{transform:rotateY(180deg);background:color-mix(in srgb,var(--subject,#6654c8) 10%,#fff)}
+      .flip:focus-visible .flip-face{outline:3px solid var(--yellow)}
+      .flip-tag{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--subject,var(--purple))}
+      .flip-text{font-size:21px;font-weight:800}.flip-answer{font-size:26px;font-weight:900;color:var(--subject,var(--purple))}
+      .flip-choices{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.flip-choices span{background:#f3f1ea;border-radius:10px;padding:4px 10px;font-size:14px}
+      .flip small{color:var(--muted)}
+      .card-actions{display:flex;justify-content:center;gap:12px;margin-top:16px}
+      @media(prefers-reduced-motion:reduce){.flip-inner{transition:none}}
+      @media(max-width:720px){.sheet{padding:16px}.sheet-head{flex-direction:column}.sheet-meta{text-align:left}.flip-text{font-size:18px}.flip-face{min-height:220px;padding:18px}}
+      .cards-table{width:100%;border-collapse:collapse}.cards-table th,.cards-table td{border:1px solid #bbb;padding:8px 10px;vertical-align:top;width:50%;font-size:14px}
+      @media print{
+        @page{margin:12mm}
+        body{background:#fff!important}
+        body *{visibility:hidden}
+        #sheetPrint,#sheetPrint *{visibility:visible}
+        #sheetPrint{position:absolute;left:0;top:0;width:100%;max-width:none;margin:0;border:0;border-top:5px solid var(--subject,#6654c8);box-shadow:none;padding:0}
+        #sheetPrint.print-only{display:block}
+        .buddy,.no-print{display:none!important}
+        *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      }
+    </style>
+    <style>
+      /* Transverse : écran d'attente */
+      .loader{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:var(--paper);transition:opacity .3s}
+      .loader.fade{opacity:0;pointer-events:none}
+      .loader-box{text-align:center;padding:24px;max-width:340px}
+      .loader-bag{font-size:68px;line-height:1;animation:bagHop 1s ease-in-out infinite}
+      .loader-dots{display:flex;gap:10px;justify-content:center;margin:14px 0 6px;font-size:22px}
+      .loader-dots span{animation:twinkle 1.2s ease-in-out infinite}.loader-dots span:nth-child(2){animation-delay:.2s}.loader-dots span:nth-child(3){animation-delay:.4s}
+      .loader p{font-weight:800;font-size:19px;margin:8px 0 4px}.loader small{color:var(--muted);display:block;min-height:40px}
+      @keyframes bagHop{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(-6deg)}}
+      @keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+      @media(prefers-reduced-motion:reduce){.loader-bag,.loader-dots span{animation:none}}
+    </style>
+  </head>
+  <body>
+    <div id="loader" class="loader" role="status" aria-live="polite"><div class="loader-box"><div class="loader-bag" aria-hidden="true">🎒</div><div class="loader-dots" aria-hidden="true"><span>⭐</span><span>⭐</span><span>⭐</span></div><p id="loaderText">On ouvre ton cartable…</p><small id="loaderTip"></small></div></div>
+    <section id="authGate" class="gate" hidden>
+      <div class="gate-head">
+        <div class="brand">🎒 <span>Révisions en jeu</span></div>
+        <h1 class="gate-title">Prêt pour ta mission<br><em>de révision ?</em></h1>
+        <p class="gate-intro">Choisis ton profil et saisis ton code d’accès.</p>
+      </div>
+      <div class="login-grid">
+        <article class="card">
+          <h2>🧑‍🎓 Espace élève</h2>
+          <form id="studentLoginForm">
+            <div class="field"><label for="loginProfile">Profil</label><select id="loginProfile" required></select></div>
+            <div class="field"><label for="loginCode">Code d’accès</label><input id="loginCode" type="password" inputmode="text" autocomplete="current-password" minlength="8" required></div>
+            <button class="btn primary" type="submit">Entrer dans mon profil</button>
+          </form>
+          <div id="studentLoginStatus" class="error" role="status" aria-live="polite"></div>
+        </article>
+        <article class="card">
+          <h2>🔐 Administration</h2>
+          <form id="adminLoginForm">
+            <div class="field"><label for="adminUsername">Identifiant</label><input id="adminUsername" autocomplete="username" required></div>
+            <div class="field"><label for="adminPassword">Mot de passe</label><input id="adminPassword" type="password" autocomplete="current-password" required></div>
+            <button class="btn secondary" type="submit">Connexion admin</button>
+          </form>
+          <div id="adminLoginStatus" class="error" role="status" aria-live="polite"></div>
+        </article>
+      </div>
+      <article id="setupCard" class="card" style="max-width:900px;margin:18px auto 0" hidden>
+        <h2>⚙️ Première configuration de l’administrateur</h2>
+        <div class="notice">Saisis le code d’installation temporaire fourni pour ce projet. Il sert uniquement à créer le premier compte admin ; après cette création, ce formulaire est désactivé.</div>
+        <form id="setupAdminForm">
+          <div class="field"><label for="setupCode">Code temporaire</label><input id="setupCode" autocomplete="one-time-code" required></div>
+          <div class="field"><label for="setupUsername">Identifiant admin</label><input id="setupUsername" autocomplete="username" minlength="3" maxlength="40" required></div>
+          <div class="field"><label for="setupPassword">Mot de passe admin (12 caractères minimum)</label><input id="setupPassword" type="password" autocomplete="new-password" minlength="12" required></div>
+          <button class="btn primary" type="submit">Créer le compte admin</button>
+        </form>
+        <div id="setupStatus" class="error" role="status" aria-live="polite"></div>
+      </article>
+      <p class="small" style="text-align:center;margin:20px auto">Les codes d’accès ne sont jamais affichés dans les profils publics.</p>
+    </section>
+
+    <div id="studentApp" hidden>
+      <header class="top"><div class="shell top-inner">
+        <div class="brand">🎒 <span>Révisions en jeu</span></div>
+        <div class="top-actions"><span id="studentIdentity" class="identity"></span><button type="button" class="btn secondary icon-btn" id="soundToggle" aria-pressed="false">🔇 Son</button><button class="btn secondary" id="studentLogout">Quitter mon profil</button></div>
+      </div></header>
+      <main class="shell">
+        <section class="hero">
+          <div><div class="tag" id="profileTag">Chargement…</div><h1 id="heroTitle">Une mission<br><em>révision en jeu !</em></h1>
+            <p id="heroIntro">Choisis si tu veux découvrir un cours ou t’entraîner avec un quiz.</p>
+            <div class="scorebar"><b>⭐ <span id="score">0</span> étoiles gagnées</b><span class="lesson-count">📚 <strong id="lessons">0</strong> quiz terminés</span><button type="button" class="btn secondary rewards-open" id="openRewards">🏅 Mes badges et récompenses</button></div>
+          </div><div class="mascot"><b id="heroAvatar">🦊</b><div id="coachName">Ton coach de révision</div></div>
+        </section>
+        <section id="modeHome" class="mode-home" aria-label="Choisir une activité">
+          <div id="studentDashboard" class="dash" aria-label="Ton tableau de bord"></div>
+          <button type="button" class="mode-card" id="openCourseMode"><span class="mode-icon">📖</span><h2>Suivre un cours</h2><p>Choisis une matière, découvre ses modules et avance à ton rythme.</p></button>
+          <button type="button" class="mode-card" id="openQuizMode"><span class="mode-icon">🎯</span><h2>Faire un quiz</h2><p>Choisis une matière, un module et une difficulté pour t’entraîner.</p></button>
+        </section>
+        <section id="courseView" hidden>
+          <button type="button" class="btn secondary view-back" id="courseBack">← Choisir une activité</button>
+          <div class="course-heading"><h2>Choisis une matière</h2><p>Chaque matière est organisée en leçons courtes et indépendantes des quiz.</p></div>
+          <nav class="subjects" id="courseSubjects" aria-label="Choisir une matière pour les cours"></nav>
+          <div id="courseModulesPanel" class="card">
+            <div class="course-heading"><h2 id="courseSubjectTitle"></h2><p>Choisis le module que tu veux apprendre.</p></div>
+            <div id="courseModuleGrid" class="lesson-grid"></div>
+          </div>
+          <article id="courseLessonPanel" class="lesson-content" hidden>
+            <button type="button" class="btn secondary" id="courseModulesBack">← Retour aux modules</button>
+            <div class="lesson-copy"><div class="tag" id="lessonSubjectTag"></div><h2 id="lessonTitle"></h2><button type="button" class="btn secondary speak-btn" id="lessonSpeak" hidden>🔊 Écouter le cours</button><div id="lessonBody"></div></div>
+            <div class="lesson-actions"><button type="button" class="btn primary" id="lessonStartQuiz">Faire le quiz de ce module</button><button type="button" class="btn secondary" id="lessonSheet">📝 Fiche à retenir</button><button type="button" class="btn secondary" id="lessonCards">🃏 Cartes mémoire</button><button type="button" class="btn secondary" id="lessonBackToMode">Choisir une activité</button></div>
+          </article>
+        </section>
+        <section id="quizView" hidden>
+          <button type="button" class="btn secondary view-back" id="quizBack">← Choisir une activité</button>
+          <nav class="subjects" id="subjects" aria-label="Choisir une matière"></nav>
+          <section class="module-panel card" id="modulePanel">
+            <div class="module-controls">
+              <div class="field"><label for="moduleSelect">📚 Module</label><select id="moduleSelect"></select></div>
+              <div class="field"><label for="level">🎯 Difficulté</label><select id="level"><option value="facile">Facile</option><option value="moyen" selected>Moyen</option><option value="difficile">Difficile</option></select></div>
+            </div>
+            <div class="course-box quiz-small-course"><div class="tag">Petit rappel avant le quiz</div><h2 id="moduleTitle"></h2><div id="courseContent" class="course-text"></div></div>
+            <div class="module-footer"><span id="available" class="small"></span><button class="btn primary" id="startQuiz">Commencer le quiz</button></div>
+          </section>
+          <section class="panel" id="game" aria-live="polite"><div class="loading">Préparation des questions…</div></section>
+        </section>
+        <section id="sheetView" hidden>
+          <div class="sheet-toolbar no-print">
+            <button type="button" class="btn secondary" id="sheetBack">← Retour au cours</button>
+            <button type="button" class="btn secondary" id="sheetModeFiche">📝 Fiche à retenir</button>
+            <button type="button" class="btn secondary" id="sheetModeCards">🃏 Cartes mémoire</button>
+            <button type="button" class="btn primary" id="sheetPrintBtn">🖨️ Imprimer la fiche</button>
+          </div>
+          <div id="sheetBody"></div>
+        </section>
+        <section id="rewardsView" hidden>
+          <button type="button" class="btn secondary view-back" id="rewardsBack">← Choisir une activité</button>
+          <div id="rewardsBody"></div>
+        </section>
+        <footer class="footer" id="footerMessage">Ta progression est enregistrée dans ton profil.</footer>
+      </main>
+    </div>
+
+    <div id="buddy" class="buddy" hidden aria-live="polite"><div class="buddy-bubble" id="buddyText"></div><div class="buddy-face" id="buddyFace" aria-hidden="true">🦊</div></div>
+
+    <div id="adminApp" hidden>
+      <header class="top"><div class="shell top-inner"><div class="brand">🎒 <span>Révisions en jeu</span> · Administration</div><button class="btn secondary" id="adminLogout">Déconnexion admin</button></div></header>
+      <main class="admin-wrap">
+        <div class="admin-heading"><div><div class="tag">Espace réservé à l’administrateur</div><h1 id="adminViewTitle">Suivi des élèves</h1><p id="adminViewIntro">Profils, matières attribuées et résultats des dernières séries.</p></div><button class="btn secondary" id="refreshDashboard">Actualiser</button></div>
+        <nav class="admin-tabs" aria-label="Sections de l’administration">
+          <button type="button" class="admin-tab" data-view="suivi">📊 Suivi des élèves</button>
+          <button type="button" class="admin-tab" data-view="cours">👀 Cours et quiz</button>
+          <button type="button" class="admin-tab" data-view="creation">＋ Création de profil</button>
+          <button type="button" class="admin-tab" data-view="import">📥 Import et modules</button>
+          <button type="button" class="admin-tab" data-view="admins">⚙️ Administrateurs</button>
+        </nav>
+        <div id="adminProfileBar">
+            <div class="card profile-switcher">
+              <div class="field"><label for="adminProfileSelect">👤 Profil à gérer</label><select id="adminProfileSelect"></select></div>
+              <span id="adminProfileCount" class="small"></span>
+            </div>
+        </div>
+        <section class="admin-view" data-view="suivi">
+            <div id="adminProfiles" class="profile-cards"><div class="loading">Chargement du tableau de bord…</div></div>
+        </section>
+        <section class="admin-view" data-view="cours" hidden>
+            <div class="card" id="previewCard">
+              <h3>👀 Consulter les cours et les quiz</h3>
+              <p class="small">Choisis un niveau, une matière et un module pour lire le cours fourni et toutes les questions du quiz, avec la bonne réponse.</p>
+              <form id="courseSearchForm" class="search-row" role="search">
+                <div class="field"><label for="courseSearchInput">🔎 Rechercher dans les cours et les questions</label><input id="courseSearchInput" type="search" placeholder="ex. : fraction, Louis XIV, prétérit…" autocomplete="off" minlength="2" required></div>
+                <label class="search-scope"><input type="checkbox" id="courseSearchAll" checked> Tous les niveaux</label>
+                <button class="btn secondary" type="submit">Rechercher</button>
+              </form>
+              <div id="courseSearchStatus" class="manage-status" role="status" aria-live="polite"></div>
+              <div id="courseSearchResults" class="search-results"></div>
+              <div class="field"><label for="previewGrade">Niveau</label><select id="previewGrade"></select></div>
+              <div class="form-row"><div class="field"><label for="previewSubject">Matière</label><select id="previewSubject"></select></div><div class="field"><label for="previewModule">Module</label><select id="previewModule"></select></div></div>
+              <div id="previewStatus" class="manage-status" role="status" aria-live="polite"></div>
+              <div id="modulePreview"></div>
+            </div>
+        </section>
+        <section class="admin-view" data-view="creation" hidden>
+          <div class="card">
+            <h2>＋ Créer un profil élève</h2>
+            <form id="createProfileForm">
+              <div class="field"><label for="newName">Prénom ou nom</label><input id="newName" maxlength="40" required></div>
+              <div class="field"><label for="newGrade">Classe / niveau scolaire</label><select id="newGrade" required><option value="">Choisir une classe…</option><option>CP</option><option>CE1</option><option>CE2</option><option>CM1</option><option>CM2</option><option>6e</option><option>5e</option><option>4e</option><option>3e</option><option>2nde</option><option>1re</option><option>Terminale</option><option value="autre">Autre…</option></select></div>
+              <div class="field" id="otherGradeField" hidden><label for="newGradeOther">Précise la classe</label><input id="newGradeOther" maxlength="30"></div>
+              <div class="field"><label for="newAccessCode">Code d’accès (8 caractères minimum)</label><input id="newAccessCode" autocomplete="new-password" minlength="8" required></div>
+              <h3 class="section-title">Matières attribuées</h3><div class="subject-picker" id="subjectPicker"></div>
+              <div id="courseTemplateNotice" class="notice">Choisis une classe pour voir les cours modèles qui seront ajoutés automatiquement.</div>
+              <button class="btn primary" id="createProfileButton" type="submit">Créer le profil</button>
+            </form>
+            <div id="createProfileStatus" class="manage-status" role="status" aria-live="polite"></div>
+          </div>
+        </section>
+        <section class="admin-view" data-view="import" hidden>
+            <div class="card" id="profileTools">
+            <h3>📥 Importer des questions</h3>
+            <p class="small">L’import remplace les questions des matières présentes dans le fichier pour le profil sélectionné.</p>
+            <div class="admin-import"><label class="btn secondary" for="adminImportFile">Choisir un JSON/CSV</label><input id="adminImportFile" type="file" accept=".json,.csv,application/json,text/csv" hidden></div>
+            <div id="importStatus" class="manage-status" role="status" aria-live="polite"></div>
+            <div class="divider"></div>
+            <h3>📖 Modules et petits cours</h3>
+            <p class="small">Crée un chapitre, sa leçon et le réglage de son quiz. Pour ranger les questions dans le chapitre, ajoute son identifiant dans le JSON ou dans la colonne « module_id » du CSV.</p>
+            <div class="field"><label for="moduleSubject">Matière</label><select id="moduleSubject"></select></div>
+            <div class="field"><label for="existingModule">Module à modifier</label><select id="existingModule"><option value="">＋ Nouveau module</option></select></div>
+            <form id="moduleForm">
+              <div class="field"><label for="moduleFormTitle">Titre du module</label><input id="moduleFormTitle" maxlength="90" required></div>
+              <div class="field"><label for="moduleSummary">Petit rappel affiché avant le quiz</label><textarea id="moduleSummary" rows="3" maxlength="1200" placeholder="Les notions essentielles en quelques lignes…"></textarea></div>
+              <div class="field"><label for="moduleCourse">Cours complet du module</label><textarea id="moduleCourse" rows="10" maxlength="20000" placeholder="Explique la leçon pas à pas, avec des exemples et les règles à retenir…"></textarea></div>
+              <div class="form-row"><div class="field"><label for="moduleQuestionCount">Questions par quiz</label><input id="moduleQuestionCount" type="number" min="1" max="30" value="10" required></div><div class="field"><label for="moduleDifficulty">Difficulté proposée</label><select id="moduleDifficulty"><option value="facile">Facile</option><option value="moyen" selected>Moyen</option><option value="difficile">Difficile</option></select></div></div>
+              <button class="btn secondary" id="saveModuleButton" type="submit">Enregistrer le module</button>
+            </form>
+            <div id="moduleStatus" class="manage-status" role="status" aria-live="polite"></div>
+            <div id="moduleList" class="module-list"></div>
+            </div>
+        </section>
+        <section class="admin-view" data-view="admins" hidden>
+          <div class="card">
+            <h3>🔑 Changer le mot de passe admin</h3>
+            <form id="changeAdminPasswordForm">
+              <div class="field"><label for="currentAdminPassword">Mot de passe actuel</label><input id="currentAdminPassword" type="password" autocomplete="current-password" required></div>
+              <div class="field"><label for="newAdminPassword">Nouveau mot de passe (12 caractères minimum)</label><input id="newAdminPassword" type="password" autocomplete="new-password" minlength="12" required></div>
+              <button class="btn secondary" type="submit">Mettre à jour le mot de passe</button>
+            </form>
+            <div id="passwordStatus" class="manage-status" role="status" aria-live="polite"></div>
+            <div class="divider"></div>
+            <h3>👥 Administrateurs</h3>
+            <div id="adminList" class="module-list"></div>
+            <details class="profile-edit"><summary>＋ Ajouter un administrateur</summary>
+              <form id="createAdminForm">
+                <div class="field"><label for="newAdminUsername">Identifiant du nouvel admin</label><input id="newAdminUsername" autocomplete="off" minlength="3" maxlength="40" required></div>
+                <div class="field"><label for="newAdminPasswordCreate">Son mot de passe (12 caractères minimum)</label><input id="newAdminPasswordCreate" type="password" autocomplete="new-password" minlength="12" required></div>
+                <div class="field"><label for="createAdminConfirm">Ton mot de passe actuel (confirmation)</label><input id="createAdminConfirm" type="password" autocomplete="current-password" required></div>
+                <button class="btn secondary" type="submit">Créer l’administrateur</button>
+              </form>
+            </details>
+            <div id="adminAccountsStatus" class="manage-status" role="status" aria-live="polite"></div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">Les codes d’accès sont conservés sous forme de condensat salé dans les propriétés privées du script.</footer>
+    </div>
+
+    <script>
+      'use strict';
+      const $ = (id) => document.getElementById(id);
+      let app = null;
+      let profileId = '';
+      let activeSubject = '';
+      let activeModuleId = '';
+      let courseSubjectKey = '';
+      let courseModuleId = '';
+      let level = 'moyen';
+      let round = [];
+      let responses = [];
+      let questionIndex = 0;
+      let locked = false;
+      let streak = 0;
+      let lastRounds = Object.create(null);
+      let sessionToken = '';
+      let adminData = null;
+      let selectedAdminProfileId = '';
+
+      // Adresse /exec de l'API, remplie par tools/build-static.cjs pour la version publiée sur GitHub Pages.
+      const API_URL = 'https://script.google.com/macros/s/AKfycby60hNk776eZxMUqpTQAm49J_D3vs7wA8fKOIQ5cgs6tkcz_tz1YMvvAxxhw7GjgJds/exec';
+      function callApi(method, args) {
+        return fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ method, args }),
+          credentials: 'omit',
+          redirect: 'follow',
+        }).then((response) => {
+          if (!response.ok) throw new Error('Le serveur ne répond pas. Réessaie dans un instant.');
+          return response.json();
+        }, () => { throw new Error('Serveur injoignable. Vérifie la connexion Internet.'); }).then((data) => {
+          if (!data || !data.ok) throw new Error((data && data.error) || 'Erreur du serveur.');
+          return data.result;
+        });
+      }
+      function callServer(method, args = []) {
+        if (!(window.google && google.script && google.script.run)) {
+          if (!API_URL) return Promise.reject(new Error('Adresse du serveur non configurée.'));
+          return callApi(method, args);
+        }
+        return new Promise((resolve, reject) => {
+          const runner = google.script.run.withSuccessHandler(resolve).withFailureHandler((error) => reject(new Error(error.message || String(error))));
+          const calls = {
+            getPublicBootstrap: () => runner.getPublicBootstrap(),
+            setupAdmin: () => runner.setupAdmin(...args),
+            adminLogin: () => runner.adminLogin(...args),
+            studentLogin: () => runner.studentLogin(...args),
+            getStudentBootstrap: () => runner.getStudentBootstrap(...args),
+            getAdminDashboard: () => runner.getAdminDashboard(...args),
+            changeAdminPassword: () => runner.changeAdminPassword(...args),
+            createProfile: () => runner.createProfile(...args),
+            updateProfile: () => runner.updateProfile(...args),
+            setProfileAccessCode: () => runner.setProfileAccessCode(...args),
+            deleteProfile: () => runner.deleteProfile(...args),
+            getModulePreview: () => runner.getModulePreview(...args),
+            getGradeModules: () => runner.getGradeModules(...args),
+            searchCourses: () => runner.searchCourses(...args),
+            createAdmin: () => runner.createAdmin(...args),
+            deleteAdmin: () => runner.deleteAdmin(...args),
+            getModuleManagerData: () => runner.getModuleManagerData(...args),
+            saveCourseModule: () => runner.saveCourseModule(...args),
+            saveQuizResult: () => runner.saveQuizResult(...args),
+            saveStudentLook: () => runner.saveStudentLook(...args),
+            importQuestionFile: () => runner.importQuestionFile(...args),
+            logout: () => runner.logout(...args),
+          };
+          if (!calls[method]) { reject(new Error('Action serveur inconnue.')); return; }
+          calls[method]();
+        });
+      }
+      function escapeHtml(value) {
+        return String(value == null ? '' : value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+      }
+      function shuffle(items) {
+        const result = [...items];
+        for (let i = result.length - 1; i > 0; i -= 1) { const j = Math.floor(Math.random() * (i + 1)); [result[i], result[j]] = [result[j], result[i]]; }
+        return result;
+      }
+      function storeSession(token, role) {
+        sessionToken = token;
+        try { sessionStorage.setItem('revisionJeuxSession', JSON.stringify({ token, role })); } catch (error) { /* stockage navigateur indisponible */ }
+      }
+      function clearSession() {
+        const oldToken = sessionToken;
+        sessionToken = '';
+        try { sessionStorage.removeItem('revisionJeuxSession'); } catch (error) { /* stockage navigateur indisponible */ }
+        if (oldToken) callServer('logout', [oldToken]).catch(() => {});
+        app = null; adminData = null; profileId = ''; delete document.body.dataset.theme; $('buddy').hidden = true;
+        $('studentApp').hidden = true; $('adminApp').hidden = true; $('authGate').hidden = false;
+        $('loginCode').value = ''; $('adminPassword').value = '';
+      }
+      function profileTitle(profile) {
+        const readiness = profile.id === 'aksel' ? 'prêt' : 'prête';
+        return profile.builtIn ? `${escapeHtml(profile.name)}, ${readiness} pour<br><em>la mission révision&nbsp;?</em>` : `Mission révision<br><em>pour ${escapeHtml(profile.name)} !</em>`;
+      }
+      function syncProfile(data) {
+        app = data;
+        profileId = data.profileId;
+        const profile = data.profiles[0];
+        $('studentIdentity').textContent = `${profile.name} · ${profile.grade}`;
+        $('profileTag').textContent = `${profile.grade} · On apprend en s’amusant`;
+        $('heroTitle').innerHTML = profileTitle(profile);
+        $('heroIntro').textContent = 'Choisis si tu veux découvrir un cours ou t’entraîner avec un quiz.';
+        $('coachName').textContent = `Foxi, le coach de ${profile.name} !`;
+        $('footerMessage').textContent = `La progression de ${profile.name} est enregistrée dans son profil. 🌈`;
+        document.title = `Les révisions de ${profile.name} — ${profile.grade}`;
+        $('score').textContent = data.stats.stars;
+        $('lessons').textContent = data.stats.lessons;
+        renderDashboard(); applyLook(); $('rewardsView').hidden = true; $('sheetView').hidden = true;
+        activeSubject = Object.keys(data.bank.subjects)[0] || '';
+        const initialSubject = data.bank.subjects[activeSubject];
+        activeModuleId = initialSubject && initialSubject.modules[0] ? initialSubject.modules[0].id : '';
+        level = initialSubject && initialSubject.modules[0] ? initialSubject.modules[0].quiz.difficulty : 'moyen';
+        $('level').value = level;
+        courseSubjectKey = activeSubject;
+        $('modeHome').hidden = false; $('courseView').hidden = true; $('quizView').hidden = true;
+        $('courseLessonPanel').hidden = true; $('courseModulesPanel').hidden = false;
+        $('authGate').hidden = true; $('adminApp').hidden = true; $('studentApp').hidden = false;
+        renderSubjects(); renderCourseSubjects(); renderQuiz();
+      }
+      function renderSubjects() {
+        const nav = $('subjects'); nav.replaceChildren();
+        Object.entries(app.bank.subjects).forEach(([key, subject]) => {
+          const button = document.createElement('button');
+          button.type = 'button'; button.className = `subject${key === activeSubject ? ' active' : ''}`; button.dataset.key = key; button.style.setProperty('--subject', subjectColor(key));
+          button.innerHTML = `<span>${escapeHtml(subject.icon || '📘')}</span>${escapeHtml(subject.name)}<small> · ${subject.questions.length}</small><i class="subject-bar" title="Maîtrise : ${subjectMastery(key).percent} %"><i style="width:${subjectMastery(key).percent}%"></i></i>`;
+          button.onclick = () => {
+            activeSubject = key; activeModuleId = subject.modules[0] ? subject.modules[0].id : '';
+            level = subject.modules[0] ? subject.modules[0].quiz.difficulty : 'moyen'; $('level').value = level;
+            lastRounds = Object.create(null); renderSubjects(); renderQuiz();
+          };
+          nav.appendChild(button);
+        });
+      }
+      function currentSubject() { return app && app.bank.subjects[activeSubject]; }
+      function currentCourseSubject() { return app && app.bank.subjects[courseSubjectKey]; }
+      function courseModeModule(subject, module) {
+        const questions = subject.questions.filter((question) => question.moduleId === module.id).length;
+        const courseSummary = module.summary || module.course || 'Une leçon pour comprendre les notions importantes de ce chapitre.';
+        return `<button type="button" class="lesson-card" data-course-module="${escapeHtml(module.id)}"><strong>📘 ${escapeHtml(module.title)}</strong>${questions ? masteryStars(courseSubjectKey, module.id) : ''}<span>${escapeHtml(courseSummary.slice(0, 170))}${courseSummary.length > 170 ? '…' : ''}</span><small>${questions} question${questions === 1 ? '' : 's'} dans le quiz associé →</small></button>`;
+      }
+      function renderCourseSubjects() {
+        const nav = $('courseSubjects'); nav.replaceChildren();
+        Object.entries(app.bank.subjects).forEach(([key, subject]) => {
+          const button = document.createElement('button');
+          button.type = 'button'; button.className = `subject${key === courseSubjectKey ? ' active' : ''}`; button.style.setProperty('--subject', subjectColor(key));
+          button.innerHTML = `<span>${escapeHtml(subject.icon || '📘')}</span>${escapeHtml(subject.name)}<i class="subject-bar" title="Maîtrise : ${subjectMastery(key).percent} %"><i style="width:${subjectMastery(key).percent}%"></i></i>`;
+          button.onclick = () => { courseSubjectKey = key; $('courseLessonPanel').hidden = true; $('courseModulesPanel').hidden = false; renderCourseSubjects(); renderCourseModules(); };
+          nav.appendChild(button);
+        });
+        renderCourseModules();
+      }
+      function renderCourseModules() {
+        const subject = currentCourseSubject(); if (!subject) return;
+        $('courseSubjectTitle').textContent = `${subject.icon || '📘'} ${subject.name}`;
+        $('courseView').style.setProperty('--subject', subjectColor(courseSubjectKey));
+        // On masque les modules vides (ni cours ni question), par exemple d'anciens modules d'une banque enregistrée.
+        const modules = (Array.isArray(subject.modules) ? subject.modules : [])
+          .filter((module) => (module.course && module.course.trim()) || (subject.questions || []).some((question) => question.moduleId === module.id));
+        $('courseModuleGrid').innerHTML = modules.length
+          ? modules.map((module) => courseModeModule(subject, module)).join('')
+          : '<div class="course-empty">Aucun module de cours n’est encore disponible pour cette matière.</div>';
+        document.querySelectorAll('[data-course-module]').forEach((button) => button.addEventListener('click', () => showCourseLesson(button.dataset.courseModule)));
+      }
+      function showCourseLesson(moduleId) {
+        const subject = currentCourseSubject();
+        const module = subject && subject.modules.find((item) => item.id === moduleId);
+        if (!subject || !module) return;
+        courseModuleId = module.id;
+        $('lessonSubjectTag').textContent = subject.name;
+        $('lessonTitle').textContent = module.title;
+        const body = module.course || module.summary || 'Cette leçon sera complétée par l’administrateur.';
+        const partCount = (part) => (subject.questions || []).filter((question) => question.moduleId === module.id && Number(question.partie) === part).length;
+        stopSpeaking();
+        $('lessonSpeak').hidden = !canSpeak; $('lessonSpeak').onclick = () => speak(speechSegments(body, courseSubjectKey));
+        $('lessonBody').innerHTML = renderRichCourse(body, (part) => {
+          const count = partCount(part);
+          return count ? `<div class="part-practice"><button type="button" class="btn secondary" data-practice-part="${part}">🎯 Je m’entraîne sur la partie ${part} (${Math.min(count, PRACTICE_SIZE)} question${Math.min(count, PRACTICE_SIZE) === 1 ? '' : 's'})</button></div>` : '';
+        });
+        document.querySelectorAll('#lessonBody [data-practice-part]').forEach((button) => button.addEventListener('click', () => startPracticeRound(module.id, Number(button.dataset.practicePart))));
+        $('courseModulesPanel').hidden = true; $('courseLessonPanel').hidden = false;
+        $('courseLessonPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      // ----- Lot 4 : fiche « À retenir » imprimable et cartes mémoire, construites à partir du cours et des questions -----
+      let sheetModuleId = ''; let cardDeck = []; let cardIndex = 0; let cardKnown = 0; let cardSeen = 0;
+      function courseBlocks(text) {
+        return String(text || '').split(/\n\s*\n/).map((block) => block.split('\n').map((line) => line.trim()).filter(Boolean)).filter((lines) => lines.length);
+      }
+      // Découpe le cours : bloc « À retenir » et, pour chaque partie, phrases clés, encadrés et premier schéma.
+      function courseDigest(text) {
+        const parts = []; let keep = []; let current = null;
+        courseBlocks(text).forEach((block) => {
+          let lines = block;
+          const heading = /^(\d+)\.\s+\S/.exec(lines[0]);
+          if (heading && lines[0].length <= 90) { current = { title: lines[0], key: [], boxes: [], schema: '', first: '' }; parts.push(current); lines = lines.slice(1); }
+          if (!lines.length) return;
+          if (/^à retenir/i.test(lines[0])) { keep = lines; current = null; return; }
+          if (!current) return;
+          if (/^(attention|définitions?|astuces?)\b/i.test(lines[0])) { if (current.boxes.length < 2) current.boxes.push(lines.filter((line) => !/^\[\[/.test(line))); return; }
+          if (/^exemples?\b/i.test(lines[0])) return;
+          lines.forEach((line) => {
+            const schema = /^\[\[(.+)\]\]$/.exec(line);
+            if (schema) { if (!current.schema && !/^image\s/.test(schema[1])) current.schema = schema[1]; return; }
+            const text = line.replace(/^[-•]\s+/, '');
+            if (!current.first && text.length > 20) current.first = text;
+            if (/\*\*.+?\*\*|==.+?==/.test(text) && current.key.length < 4) current.key.push(text);
+          });
+        });
+        return { keep, parts };
+      }
+      function sheetQuestions(subject, moduleId, max) {
+        const pool = (subject.questions || []).filter((question) => question.moduleId === moduleId && !question.schema
+          && ['qcm', 'vrai-faux', 'saisie'].includes(questionType(question)));
+        const byPart = new Map();
+        ['moyen', 'facile', 'difficile'].forEach((difficulty) => pool.filter((question) => question.difficulty === difficulty).forEach((question) => {
+          const part = Number(question.partie) || 0; if (!byPart.has(part)) byPart.set(part, []); byPart.get(part).push(question);
+        }));
+        const picked = []; let round = 0;
+        while (picked.length < max && [...byPart.values()].some((list) => list.length > round)) {
+          [...byPart.keys()].sort((a, b) => a - b).forEach((part) => { const list = byPart.get(part); if (picked.length < max && list[round]) picked.push(list[round]); });
+          round += 1;
+        }
+        return picked;
+      }
+      function openSheet(moduleId, mode) {
+        const subject = currentCourseSubject(); const module = subject && subject.modules.find((item) => item.id === moduleId);
+        if (!subject || !module) return;
+        sheetModuleId = moduleId; stopSpeaking();
+        $('modeHome').hidden = true; $('courseView').hidden = true; $('quizView').hidden = true; $('rewardsView').hidden = true; $('sheetView').hidden = false;
+        $('sheetView').style.setProperty('--subject', subjectColor(courseSubjectKey));
+        $('sheetModeFiche').classList.toggle('active', mode !== 'cards'); $('sheetModeCards').classList.toggle('active', mode === 'cards');
+        if (mode === 'cards') renderCards(subject, module); else renderSheet(subject, module);
+        $('sheetView').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      function renderSheet(subject, module) {
+        const digest = courseDigest(module.course);
+        const profile = app.profiles[0];
+        const questions = sheetQuestions(subject, module.id, 6);
+        const partsHtml = digest.parts.map((part) => {
+          const points = part.key.length ? part.key : (part.first ? [part.first] : []);
+          return `<section class="sheet-part"><h3>${inlineMarkup(part.title)}</h3>
+            ${points.length ? `<ul>${points.map((line) => `<li>${inlineMarkup(line)}</li>`).join('')}</ul>` : ''}
+            ${part.boxes.map((lines) => renderRichCourse(lines.join('\n'))).join('')}
+            ${part.schema ? renderSchema(part.schema) : ''}</section>`;
+        }).join('');
+        const quizHtml = questions.length ? `<section class="sheet-check"><h3>✏️ Je vérifie</h3><ol>${questions.map((question) => `<li>${inlineMarkup(question.question)}${isChoiceType(question) ? `<div class="sheet-choices">${question.answers.map((answer) => `<span>☐ ${escapeHtml(answer)}</span>`).join('')}</div>` : '<div class="sheet-line"></div>'}</li>`).join('')}</ol>
+          <p class="sheet-answers"><strong>Réponses :</strong> ${questions.map((question, index) => `${index + 1}. ${escapeHtml(correctAnswerText(question))}`).join(' · ')}</p></section>` : '';
+        $('sheetBody').innerHTML = `<article class="sheet" id="sheetPrint">
+          <header class="sheet-head"><div><div class="sheet-subject">${escapeHtml(subject.icon || '📘')} ${escapeHtml(subject.name)} · ${escapeHtml(profile.grade)}</div><h2>${escapeHtml(module.title)}</h2></div>
+            <div class="sheet-meta">Fiche de ${escapeHtml(profile.name)}<br>${new Date().toLocaleDateString('fr-FR')}</div></header>
+          ${digest.keep.length ? `<section class="sheet-keep">${renderRichCourse(digest.keep.join('\n'))}</section>` : ''}
+          <div class="sheet-parts">${partsHtml}</div>
+          ${quizHtml}
+        </article>`;
+        $('sheetPrintBtn').textContent = '🖨️ Imprimer la fiche';
+      }
+      // Cartes mémoire : question au recto, réponse et explication au verso. Les cartes ratées reviennent à la fin du paquet.
+      function cardPool(subject, moduleId) {
+        return (subject.questions || []).filter((question) => question.moduleId === moduleId && ['qcm', 'vrai-faux', 'saisie', 'echelle', 'ordre'].includes(questionType(question)));
+      }
+      function renderCards(subject, module) {
+        cardDeck = shuffle(cardPool(subject, module.id)).slice(0, 12).map((question) => ({ question, retry: false }));
+        cardIndex = 0; cardKnown = 0; cardSeen = 0;
+        const printable = [...cardDeck.filter((card) => !card.question.schema), ...shuffle(cardPool(subject, module.id).filter((question) => !question.schema && !cardDeck.some((card) => card.question === question))).map((question) => ({ question }))].slice(0, 12);
+        const printRows = printable.map((card, index) => `<tr><td>${index + 1}. ${inlineMarkup(card.question.question)}</td><td>${escapeHtml(correctAnswerText(card.question))}</td></tr>`).join('');
+        $('sheetBody').innerHTML = `<div class="cards-play no-print"><div class="cards-progress" id="cardsProgress"></div><div id="cardStage"></div></div>
+          <article class="sheet print-only" id="sheetPrint"><header class="sheet-head"><div><div class="sheet-subject">${escapeHtml(subject.icon || '📘')} ${escapeHtml(subject.name)}</div><h2>🃏 ${escapeHtml(module.title)}</h2></div><div class="sheet-meta">Plie la feuille au milieu<br>pour te tester !</div></header>
+            <table class="cards-table"><thead><tr><th>Question</th><th>Réponse</th></tr></thead><tbody>${printRows}</tbody></table></article>`;
+        $('sheetPrintBtn').textContent = '🖨️ Imprimer les cartes';
+        drawCard();
+      }
+      function drawCard() {
+        const stage = $('cardStage'); if (!stage) return;
+        if (!cardDeck.length) { stage.innerHTML = '<div class="empty"><p>Ce module n’a pas encore de questions pour faire des cartes.</p></div>'; $('cardsProgress').textContent = ''; return; }
+        if (cardIndex >= cardDeck.length) {
+          const total = cardSeen; launchConfetti(); playTone('end');
+          stage.innerHTML = `<div class="done"><div class="star">🃏</div><h2>Paquet terminé !</h2><p>Tu as su <strong>${cardKnown}</strong> carte${cardKnown > 1 ? 's' : ''} du premier coup sur ${total}.</p><div class="done-actions"><button type="button" class="btn primary" id="cardsAgain">Nouveau paquet</button><button type="button" class="btn secondary" id="cardsToQuiz">Faire le quiz du module</button></div></div>`;
+          $('cardsAgain').onclick = () => openSheet(sheetModuleId, 'cards');
+          $('cardsToQuiz').onclick = () => { $('sheetView').hidden = true; activeSubject = courseSubjectKey; activeModuleId = sheetModuleId; openQuizMode(); };
+          $('cardsProgress').textContent = ''; return;
+        }
+        const card = cardDeck[cardIndex]; const question = card.question;
+        $('cardsProgress').textContent = `Carte ${cardIndex + 1} sur ${cardDeck.length}${card.retry ? ' · à revoir' : ''}`;
+        stage.innerHTML = `<div class="flip" id="flipCard" tabindex="0" role="button" aria-label="Retourner la carte"><div class="flip-inner">
+            <div class="flip-face flip-front"><span class="flip-tag">Question</span><div class="flip-text">${inlineMarkup(question.question)}</div>
+              ${question.schema ? renderSchema(question.schema) : ''}
+              ${isChoiceType(question) && question.answers.length > 2 ? `<div class="flip-choices">${question.answers.map((answer) => `<span>${escapeHtml(answer)}</span>`).join('')}</div>` : ''}
+              <small>Touche la carte pour voir la réponse</small></div>
+            <div class="flip-face flip-back"><span class="flip-tag">Réponse</span><div class="flip-answer">${escapeHtml(correctAnswerText(question))}</div>${question.explanation ? `<p>${inlineMarkup(question.explanation)}</p>` : ''}</div>
+          </div></div>
+          <div class="card-actions" id="cardActions" hidden><button type="button" class="btn secondary" id="cardAgain">↺ À revoir</button><button type="button" class="btn primary" id="cardKnew">✔ Je savais</button></div>`;
+        const flip = () => { $('flipCard').classList.add('flipped'); $('cardActions').hidden = false; };
+        $('flipCard').onclick = flip;
+        $('flipCard').onkeydown = (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); flip(); } };
+        $('cardKnew').onclick = () => { if (!card.retry) { cardKnown += 1; cardSeen += 1; } playTone('ok'); cardIndex += 1; drawCard(); };
+        $('cardAgain').onclick = () => { if (!card.retry) cardSeen += 1; cardDeck.push({ question, retry: true }); playTone('ko'); cardIndex += 1; drawCard(); };
+      }
+      function showModeHome() {
+        $('sheetView').hidden = true;
+        $('modeHome').hidden = false; $('courseView').hidden = true; $('quizView').hidden = true; $('rewardsView').hidden = true;
+        $('modeHome').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      function openCourseMode() {
+        $('modeHome').hidden = true; $('quizView').hidden = true; $('courseView').hidden = false;
+        if (!app.bank.subjects[courseSubjectKey]) courseSubjectKey = Object.keys(app.bank.subjects)[0] || '';
+        $('courseLessonPanel').hidden = true; $('courseModulesPanel').hidden = false;
+        renderCourseSubjects(); $('courseView').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      function openQuizMode() {
+        $('modeHome').hidden = true; $('courseView').hidden = true; $('quizView').hidden = false;
+        renderSubjects(); renderQuiz(); $('quizView').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      function openCourseQuiz() {
+        const subject = currentCourseSubject();
+        const module = subject && subject.modules.find((item) => item.id === courseModuleId);
+        if (!subject || !module) return;
+        activeSubject = courseSubjectKey; activeModuleId = module.id;
+        level = module.quiz.difficulty || 'moyen'; $('level').value = level;
+        $('modeHome').hidden = true; $('courseView').hidden = true; $('quizView').hidden = false;
+        renderSubjects(); renderQuiz(); $('quizView').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      // Mini-quiz sur une partie du cours : questions rattachées à cette partie (champ « partie »), toutes difficultés confondues.
+      const PRACTICE_SIZE = 5;
+      let practicePart = 0;
+      // ----- Lecture à voix haute (synthèse vocale du navigateur, sans service externe) -----
+      const canSpeak = typeof window !== 'undefined' && 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined';
+      const SPEECH_LANGS = { anglais: 'en-GB', espagnol: 'es-ES' };
+      function plainForSpeech(text) { return String(text || '').replace(/\[\[[^\]]*\]\]/g, ' ').replace(/\*\*|==/g, '').replace(/^\s*[-•]\s+/gm, ''); }
+      // En langues, on devine la langue d'un morceau : marques du français → voix française, sinon voix de la langue étudiée.
+      function guessLang(text, subjectKey) {
+        const target = SPEECH_LANGS[subjectKey];
+        if (!target) return 'fr-FR';
+        return /[àèùçêâîôûëœ]|\b(les|des|une|est|et|du|il|elle|je|avec|pour|pas|ne|nous|vous|qui|quel|quelle|signifie)\b/i.test(text) ? 'fr-FR' : target;
+      }
+      function speechSegments(text, subjectKey) {
+        const clean = plainForSpeech(text);
+        if (!SPEECH_LANGS[subjectKey]) return [{ text: clean, lang: 'fr-FR' }];
+        return clean.split(/[«»“”]/).map((part, index) => ({ text: part.trim(), lang: index % 2 ? guessLang(part, subjectKey) : 'fr-FR' })).filter((part) => part.text);
+      }
+      function speak(segments) {
+        if (!canSpeak) return;
+        if (speechSynthesis.speaking) { speechSynthesis.cancel(); return; }
+        segments.forEach(({ text, lang }) => { const utterance = new SpeechSynthesisUtterance(text); utterance.lang = lang; utterance.rate = 0.95; speechSynthesis.speak(utterance); });
+      }
+      function speakQuestion(question, subjectKey) {
+        const segments = speechSegments(question.question, subjectKey);
+        if (isChoiceType(question)) document.querySelectorAll('#questionBody .answer').forEach((button) => {
+          const text = button.textContent.replace(/^[A-Z]\.\s*|^[👍👎]\s*/u, '').trim();
+          segments.push({ text, lang: guessLang(text, subjectKey) });
+        });
+        speak(segments);
+      }
+      function stopSpeaking() { if (canSpeak) speechSynthesis.cancel(); }
+      // ----- Accueil élève : série de jours, reprise, défi du jour, erreurs à revoir, suggestions -----
+      const MIXED_LABELS = { defi: '🎯 Défi du jour', erreurs: '🔁 Mes erreurs' };
+      let mixedMode = '';
+      function roundLabel() {
+        if (mixedMode) return MIXED_LABELS[mixedMode];
+        const subject = currentSubject(); const module = subject && subject.modules.find((item) => item.id === activeModuleId);
+        return `${subject ? subject.name : ''}${module ? ` · ${module.title}` : ''}${practicePart ? ` · partie ${practicePart}` : ''}`;
+      }
+      function reviewQuestions() {
+        const due = (app && app.activity && app.activity.reviewDue) || [];
+        return due.map((item) => {
+          const subject = app.bank.subjects[item.subjectKey];
+          const question = subject && subject.questions.find((candidate) => candidate.question === item.question);
+          return question ? { ...question, _subjectKey: item.subjectKey } : null;
+        }).filter(Boolean);
+      }
+      function defiQuestions() {
+        const keys = shuffle(Object.keys(app.bank.subjects).filter((key) => app.bank.subjects[key].questions.length));
+        const picks = [];
+        for (let turn = 0; picks.length < 5 && keys.length && turn < 40; turn += 1) {
+          const key = keys[turn % keys.length]; const all = app.bank.subjects[key].questions;
+          const pool = all.filter((candidate) => candidate.difficulty !== 'facile' && !picks.some((pick) => pick.question === candidate.question));
+          const pick = shuffle((pool.length ? pool : all).slice())[0];
+          if (pick && !picks.some((item) => item.question === pick.question)) picks.push({ ...pick, _subjectKey: key });
+        }
+        return picks;
+      }
+      function startMixedRound(mode) {
+        const questions = mode === 'defi' ? defiQuestions() : reviewQuestions();
+        if (!questions.length) return;
+        $('modeHome').hidden = true; $('courseView').hidden = true; $('quizView').hidden = false;
+        renderSubjects(); renderQuiz();
+        mixedMode = mode; round = questions; responses = []; questionIndex = 0; streak = 0;
+        drawQuestion(); $('quizView').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      function resumeLast() {
+        const last = app.activity && app.activity.last;
+        if (!last || !app.bank.subjects[last.subjectKey]) return;
+        activeSubject = last.subjectKey; activeModuleId = last.moduleId;
+        const module = app.bank.subjects[activeSubject].modules.find((item) => item.id === activeModuleId);
+        level = (module && module.quiz && module.quiz.difficulty) || 'moyen'; $('level').value = level;
+        $('modeHome').hidden = true; $('courseView').hidden = true; $('quizView').hidden = false;
+        renderSubjects(); renderQuiz(); $('quizView').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      // ----- Lot 3 : couleur par matière -----
+      const SUBJECT_COLORS = { francais: '#e0663c', maths: '#3d7be0', anglais: '#d6455d', espagnol: '#d99a0b', histoire: '#a0622d', geographie: '#2a9d8f', 'histoire-geo': '#a0622d',
+        sciences: '#3fa34d', svt: '#3fa34d', 'physique-chimie': '#7a4fd6', technologie: '#5b6b82', 'arts-plastiques': '#d64fa1', 'histoire-des-arts': '#b5568a',
+        'education-musicale': '#c2459e', emc: '#2f7fa8', eps: '#ef7d22' };
+      function subjectColor(key) {
+        if (SUBJECT_COLORS[key]) return SUBJECT_COLORS[key];
+        let hue = 0; for (const char of String(key)) hue = (hue * 31 + char.charCodeAt(0)) % 360;
+        return `hsl(${hue} 60% 42%)`;
+      }
+      // ----- Lot 2 : maîtrise par module (⭐ 60 %, ⭐⭐ 80 % en moyen, ⭐⭐⭐ 80 % en difficile) -----
+      function masteryOf(subjectKey, moduleId) { return Number(app && app.rewards && app.rewards.mastery && app.rewards.mastery[`${subjectKey}/${moduleId}`]) || 0; }
+      function masteryStars(subjectKey, moduleId) {
+        const level = masteryOf(subjectKey, moduleId);
+        return `<span class="mastery" title="Maîtrise : ${level} étoile${level > 1 ? 's' : ''} sur 3">${'⭐'.repeat(level)}<span class="off">${'☆'.repeat(3 - level)}</span></span>`;
+      }
+      function quizModulesOf(subject) { return (subject.modules || []).filter((item) => (subject.questions || []).some((question) => question.moduleId === item.id)); }
+      function subjectMastery(key) {
+        const subject = app.bank.subjects[key]; const modules = subject ? quizModulesOf(subject) : [];
+        if (!modules.length) return { percent: 0, mastered: 0, total: 0 };
+        const sum = modules.reduce((total, module) => total + masteryOf(key, module.id), 0);
+        return { percent: Math.round(sum / (modules.length * 3) * 100), mastered: modules.filter((module) => masteryOf(key, module.id) >= 3).length, total: modules.length };
+      }
+      // ----- Lot 2 : compagnon et thème débloqués avec les étoiles -----
+      const THEME_SWATCHES = { classique: 'linear-gradient(135deg,#fff9ed,#6654c8)', ocean: 'linear-gradient(135deg,#eef7fb,#1f7fa8)', foret: 'linear-gradient(135deg,#f1f7ec,#2f7d4a)',
+        coucher: 'linear-gradient(135deg,#fff3ea,#d0533a)', galaxie: 'linear-gradient(135deg,#efecff,#4b32b5)' };
+      function formatDay(key) { const [year, month, day] = String(key).split('-'); return day ? `${day}/${month}/${year}` : key; }
+      function currentAvatar() {
+        const rewards = app && app.rewards; const list = (rewards && rewards.avatars) || [];
+        return list.find((item) => item.id === rewards.avatar) || { id: 'renard', icon: '🦊', name: 'Renard' };
+      }
+      function applyLook() {
+        if (!app) return;
+        const avatar = currentAvatar(); const profile = app.profiles[0];
+        document.body.dataset.theme = (app.rewards && app.rewards.theme) || 'classique';
+        $('heroAvatar').textContent = avatar.icon; $('buddyFace').textContent = avatar.icon;
+        $('coachName').textContent = `${avatar.name}, le compagnon de ${profile.name} !`;
+      }
+      async function chooseLook(look) {
+        try {
+          app.rewards = await callServer('saveStudentLook', [sessionToken, look]);
+          applyLook(); renderRewards(); playTone('badge');
+        } catch (error) { alert(error.message); }
+      }
+      function openRewards() {
+        $('modeHome').hidden = true; $('courseView').hidden = true; $('quizView').hidden = true; $('rewardsView').hidden = false;
+        renderRewards(); $('rewardsView').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      function renderRewards() {
+        const box = $('rewardsBody'); const rewards = app && app.rewards;
+        if (!rewards) { box.innerHTML = '<div class="empty"><p>Tes récompenses arrivent après ton premier quiz.</p></div>'; return; }
+        const avatar = currentAvatar(); const stars = app.stats.stars;
+        const earned = rewards.badges.filter((badge) => badge.earned).length;
+        const next = [...rewards.avatars, ...rewards.themes].filter((item) => item.stars > stars).sort((a, b) => a.stars - b.stars)[0];
+        const lockLabel = (item, chosen) => (item.unlocked ? (chosen ? '✔ choisi' : 'disponible') : `🔒 ${item.stars} ⭐`);
+        const avatarsHtml = rewards.avatars.map((item) => `<button type="button" class="rw-item${item.id === rewards.avatar ? ' chosen' : ''}" data-avatar="${escapeHtml(item.id)}" ${item.unlocked ? '' : 'disabled'}><span class="big">${escapeHtml(item.icon)}</span>${escapeHtml(item.name)}<small>${lockLabel(item, item.id === rewards.avatar)}</small></button>`).join('');
+        const themesHtml = rewards.themes.map((item) => `<button type="button" class="rw-item${item.id === rewards.theme ? ' chosen' : ''}" data-theme-choice="${escapeHtml(item.id)}" ${item.unlocked ? '' : 'disabled'}><span class="swatch" style="background:${THEME_SWATCHES[item.id] || '#eee'}"></span>${escapeHtml(item.name)}<small>${lockLabel(item, item.id === rewards.theme)}</small></button>`).join('');
+        const badgesHtml = rewards.badges.map((badge) => `<div class="badge${badge.earned ? '' : ' locked'}"><b>${escapeHtml(badge.icon)}</b><div><strong>${escapeHtml(badge.name)}</strong><small>${badge.earned ? `Gagné le ${escapeHtml(formatDay(badge.earned))}` : escapeHtml(badge.text)}</small></div></div>`).join('');
+        const mapHtml = Object.keys(app.bank.subjects).map((key) => {
+          const subject = app.bank.subjects[key]; const info = subjectMastery(key); if (!info.total) return '';
+          const tiles = quizModulesOf(subject).map((module, index) => {
+            const level = masteryOf(key, module.id);
+            return `<button type="button" class="map-tile l${level}" title="${escapeHtml(module.title)} — ${level}/3 ⭐" aria-label="${escapeHtml(module.title)}, ${level} étoile${level > 1 ? 's' : ''} sur 3" data-map-subject="${escapeHtml(key)}" data-map-module="${escapeHtml(module.id)}">${level >= 3 ? '★' : index + 1}</button>`;
+          }).join('');
+          return `<div class="map-subject" style="--subject:${subjectColor(key)}"><h4><span>${escapeHtml(subject.icon || '📘')} ${escapeHtml(subject.name)}</span><span class="small">${info.mastered}/${info.total} maîtrisé${info.mastered > 1 ? 's' : ''} · ${info.percent} %</span></h4><div class="map-tiles">${tiles}</div></div>`;
+        }).join('');
+        box.innerHTML = `<div class="rw-head"><div class="rw-avatar">${escapeHtml(avatar.icon)}</div><div><h2>Ta collection</h2>
+            <p>⭐ <strong>${stars}</strong> étoiles · 🏅 <strong>${earned}</strong> badge${earned > 1 ? 's' : ''} sur ${rewards.badges.length}</p>
+            ${next ? `<p class="small">Prochain déblocage : <strong>${escapeHtml(next.icon || '🎨')} ${escapeHtml(next.name)}</strong> à ${next.stars} étoiles (encore ${next.stars - stars}).</p>` : '<p class="small">Tu as tout débloqué, bravo ! 🎉</p>'}</div></div>
+          <section class="rw-section"><h3>🐾 Choisis ton compagnon</h3><p class="small">Il t’accompagne pendant les quiz. Gagne des étoiles pour en débloquer d’autres.</p><div class="rw-grid">${avatarsHtml}</div></section>
+          <section class="rw-section"><h3>🎨 Choisis tes couleurs</h3><div class="rw-grid">${themesHtml}</div></section>
+          <section class="rw-section"><h3>🏅 Tes badges</h3><div class="badge-grid">${badgesHtml}</div></section>
+          <section class="rw-section"><h3>🗺️ Ta carte de progression</h3><p class="small">Chaque case est un module : elle se colore avec tes étoiles (⭐ 60 % de réussite, ⭐⭐ 80 % en moyen, ⭐⭐⭐ 80 % en difficile). Touche une case pour faire son quiz.</p>${mapHtml}</section>`;
+        box.querySelectorAll('[data-avatar]').forEach((button) => { button.onclick = () => chooseLook({ avatar: button.dataset.avatar }); });
+        box.querySelectorAll('[data-theme-choice]').forEach((button) => { button.onclick = () => chooseLook({ theme: button.dataset.themeChoice }); });
+        box.querySelectorAll('[data-map-module]').forEach((button) => { button.onclick = () => {
+          activeSubject = button.dataset.mapSubject; activeModuleId = button.dataset.mapModule; $('rewardsView').hidden = true; openQuizMode();
+        }; });
+      }
+      // ----- Lot 3 : compagnon qui réagit -----
+      const BUDDY_LINES = {
+        ok: ['Bravo ! 🎉', 'Super, c’est ça !', 'Tu assures !', 'Excellent !', 'Bien joué !', 'Exactement !'],
+        streak: ['Quelle série ! 🔥', 'Tu es en feu !', 'Rien ne t’arrête !'],
+        ko: ['Pas grave, on apprend en se trompant.', 'Lis bien l’explication, tu l’auras la prochaine fois !', 'Courage, continue !', 'Presque ! Regarde la correction.'],
+        hint: ['Voilà un petit coup de pouce 💡', 'Réfléchis bien, tu peux y arriver !', 'Avec cet indice, ça devrait aller !'],
+        start: ['C’est parti ! 🚀', 'Prêt ? On y va !', 'Concentre-toi bien, tu vas y arriver.'],
+      };
+      let buddyTimer = 0;
+      function buddySay(text, mood) {
+        const buddy = $('buddy'); if (!buddy) return;
+        $('buddyText').textContent = text; buddy.hidden = false;
+        buddy.className = 'buddy'; void buddy.offsetWidth; buddy.className = `buddy show${mood ? ` ${mood}` : ''}`;
+        clearTimeout(buddyTimer); buddyTimer = setTimeout(() => { buddy.hidden = true; }, 3800);
+      }
+      function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+      // ----- Lot 3 : petits sons (désactivés par défaut, réglage gardé sur l'appareil) -----
+      let soundOn = false; try { soundOn = localStorage.getItem('rj-sound') === '1'; } catch (error) { soundOn = false; }
+      let audioCtx = null;
+      function playTone(kind) {
+        if (!soundOn) return;
+        try {
+          audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+          const notes = { ok: [660, 880], ko: [330, 247], end: [523, 659, 784, 1047], badge: [784, 988, 1175, 1568] }[kind] || [660];
+          notes.forEach((frequency, index) => {
+            const oscillator = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+            oscillator.type = kind === 'ko' ? 'sine' : 'triangle'; oscillator.frequency.value = frequency;
+            const start = audioCtx.currentTime + index * 0.11;
+            gain.gain.setValueAtTime(0.0001, start); gain.gain.exponentialRampToValueAtTime(0.16, start + 0.02); gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.24);
+            oscillator.connect(gain); gain.connect(audioCtx.destination); oscillator.start(start); oscillator.stop(start + 0.26);
+          });
+        } catch (error) { /* son indisponible : on continue sans */ }
+      }
+      function syncSoundButton() {
+        const button = $('soundToggle'); if (!button) return;
+        button.textContent = soundOn ? '🔊 Son' : '🔇 Son'; button.setAttribute('aria-pressed', String(soundOn));
+        button.title = soundOn ? 'Couper les sons' : 'Activer les sons des bonnes réponses';
+      }
+      function renderDashboard() {
+        const box = $('studentDashboard'); if (!box || !app) return;
+        const activity = app.activity || {};
+        const streakText = activity.streak ? `🔥 ${activity.streak} jour${activity.streak > 1 ? 's' : ''} d’affilée` : '🔥 Lance ta série aujourd’hui !';
+        const todayText = activity.activeToday ? '✅ Tu as déjà révisé aujourd’hui, bravo !' : (activity.streak ? 'Fais une série aujourd’hui pour garder ta flamme allumée.' : 'Une seule série suffit pour allumer ta flamme.');
+        const lastSubject = activity.last && app.bank.subjects[activity.last.subjectKey];
+        const lastModule = lastSubject && lastSubject.modules.find((item) => item.id === activity.last.moduleId);
+        const review = reviewQuestions();
+        const suggestions = Object.entries(activity.daysSince || {}).filter(([key, days]) => app.bank.subjects[key] && (days === null || days >= 7))
+          .sort((left, right) => (right[1] === null ? 999 : right[1]) - (left[1] === null ? 999 : left[1])).slice(0, 2);
+        box.innerHTML = `<div class="dash-head"><span class="dash-streak">${streakText}</span><span class="small">${todayText}</span></div>
+          <div class="dash-cards">
+            ${lastModule ? `<button type="button" class="dash-card" id="dashResume"><b>▶ Reprendre</b><span>${escapeHtml(lastSubject.name)} · ${escapeHtml(lastModule.title)}</span></button>` : ''}
+            <button type="button" class="dash-card defi" id="dashDefi"><b>🎯 Défi du jour</b><span>${activity.defiDoneToday ? '✔ Fait aujourd’hui · tu peux le refaire' : '5 questions mélangées, toutes matières'}</span></button>
+            <button type="button" class="dash-card" id="dashReview" ${review.length ? '' : 'disabled'}><b>🔁 Mes erreurs</b><span>${review.length ? `${review.length} question${review.length > 1 ? 's' : ''} à revoir aujourd’hui` : (activity.reviewTotal ? 'Rien à revoir aujourd’hui 🎉' : 'Aucune erreur à revoir 🎉')}</span></button>
+          </div>
+          ${suggestions.length ? `<div class="dash-tips">${suggestions.map(([key, days]) => `<button type="button" class="dash-tip" data-subject="${escapeHtml(key)}">💡 ${days === null ? `Tu n’as pas encore travaillé : ${escapeHtml(app.bank.subjects[key].name)}` : `Pas de ${escapeHtml(app.bank.subjects[key].name)} depuis ${days} jours`}</button>`).join('')}</div>` : ''}`;
+        if ($('dashResume')) $('dashResume').onclick = resumeLast;
+        $('dashDefi').onclick = () => startMixedRound('defi');
+        $('dashReview').onclick = () => startMixedRound('erreurs');
+        box.querySelectorAll('.dash-tip').forEach((button) => { button.onclick = () => { activeSubject = button.dataset.subject; openQuizMode(); }; });
+      }
+      function startPracticeRound(moduleId, part) {
+        activeSubject = courseSubjectKey; activeModuleId = moduleId;
+        $('modeHome').hidden = true; $('courseView').hidden = true; $('quizView').hidden = false;
+        renderSubjects(); renderQuiz();
+        const subject = currentSubject(); if (!subject) return;
+        const pool = subject.questions.filter((question) => question.moduleId === moduleId && Number(question.partie) === part);
+        if (!pool.length) return;
+        practicePart = part;
+        round = shuffle(pool.slice()).slice(0, PRACTICE_SIZE); responses = []; questionIndex = 0; streak = 0;
+        drawQuestion(); $('quizView').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      function backToCourse(moduleId) {
+        practicePart = 0; courseSubjectKey = activeSubject;
+        $('modeHome').hidden = true; $('quizView').hidden = true; $('courseView').hidden = false;
+        renderCourseSubjects(); showCourseLesson(moduleId);
+      }
+      function startRound() {
+        practicePart = 0; mixedMode = '';
+        const subject = currentSubject(); if (!subject) return;
+        const module = subject.modules.find((item) => item.id === activeModuleId);
+        if (!module) { round = []; return; }
+        const pool = subject.questions.filter((question) => question.moduleId === activeModuleId && question.difficulty === level);
+        const key = `${profileId}|${activeSubject}|${activeModuleId}|${level}`;
+        const shuffled = shuffle(pool); const previous = lastRounds[key] || [];
+        const fresh = shuffled.filter((question) => !previous.includes(question.question));
+        const desired = Math.min(module.quiz.questionCount, pool.length);
+        round = [...fresh, ...shuffled.filter((question) => previous.includes(question.question))].slice(0, desired);
+        lastRounds[key] = round.map((question) => question.question); responses = []; questionIndex = 0; streak = 0;
+      }
+      function renderQuiz() {
+        practicePart = 0; mixedMode = '';
+        const subject = currentSubject();
+        if (!subject) {
+          $('modulePanel').hidden = true;
+          $('available').textContent = 'Aucune matière attribuée';
+          $('game').innerHTML = '<div class="empty"><div class="icon">📚</div><h2>Aucune matière attribuée</h2><p>Demande à l’administrateur d’attribuer des matières à ton profil.</p></div>'; return;
+        }
+        // Le quiz ne propose que les modules qui ont au moins une question (un module sans question reste lisible en mode cours).
+        const quizModules = (subject.modules || []).filter((item) => subject.questions.some((question) => question.moduleId === item.id));
+        if (!quizModules.length) {
+          $('modulePanel').hidden = true;
+          $('game').innerHTML = `<div class="empty"><div class="icon">📚</div><h2>Aucun quiz disponible</h2><p>Demande à l’administrateur d’ajouter des questions pour ${escapeHtml(subject.name)}.</p></div>`; return;
+        }
+        $('modulePanel').hidden = false; $('quizView').style.setProperty('--subject', subjectColor(activeSubject));
+        if (!quizModules.some((item) => item.id === activeModuleId)) activeModuleId = quizModules[0].id;
+        $('moduleSelect').replaceChildren(...quizModules.map((item) => {
+          const option = document.createElement('option'); option.value = item.id; const stars = masteryOf(activeSubject, item.id); option.textContent = item.title + (stars ? ' ' + '⭐'.repeat(stars) : ''); option.selected = item.id === activeModuleId; return option;
+        }));
+        const module = quizModules.find((item) => item.id === activeModuleId);
+        const count = subject.questions.filter((question) => question.moduleId === activeModuleId && question.difficulty === level).length;
+        $('moduleTitle').textContent = module.title;
+        const reminders = [...new Set(subject.questions.filter((question) => question.moduleId === activeModuleId && question.explanation)
+          .map((question) => question.explanation.trim()).filter(Boolean))].slice(0, 5);
+        const quickReminder = module.summary || module.course.split(/\n\n/)[0] || '';
+        $('courseContent').innerHTML = quickReminder
+          ? renderRichCourse(quickReminder)
+          : reminders.length
+            ? `<p>Quelques repères à retenir :</p><ul>${reminders.map((reminder) => `<li>${escapeHtml(reminder)}</li>`).join('')}</ul><span class="small">L’administrateur peut compléter ce cours dans la gestion des modules.</span>`
+            : '<span class="small">Lis le cours complet dans la rubrique « Suivre un cours ».</span>';
+        $('available').textContent = `${count} question${count === 1 ? '' : 's'} à cette difficulté · série de ${Math.min(module.quiz.questionCount, count)}`;
+        $('startQuiz').disabled = count === 0;
+        $('startQuiz').textContent = count ? `Commencer le quiz (${Math.min(module.quiz.questionCount, count)} questions)` : 'Aucune question pour cette difficulté';
+        $('game').innerHTML = `<div class="empty"><div class="icon">📖</div><h2>Lis le petit cours, puis lance ton quiz</h2><p>${escapeHtml(subject.name)} · ${escapeHtml(module.title)}</p></div>`;
+      }
+      // ----- Cours mis en forme : intertitres, listes, gras, encadrés et schémas [[type paramètres]] -----
+      // **gras** et ==notion clé== (surlignée en couleur).
+      function inlineMarkup(text) { return escapeHtml(text).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/==(.+?)==/g, '<mark class="hl">$1</mark>'); }
+      // partButton(n) (facultatif) : HTML ajouté à la fin de la partie « n. … » du cours (bouton « Je m'entraîne »).
+      function renderRichCourse(text, partButton) {
+        let part = 0;
+        const closePart = () => (partButton && part ? partButton(part) : '');
+        return String(text || '').split(/\n\s*\n/).map((block) => {
+          const lines = block.split('\n').map((line) => line.trim()).filter(Boolean);
+          if (!lines.length) return '';
+          const heading = /^(\d+)\.\s+\S/.exec(lines[0]);
+          let before = '';
+          if (heading && lines[0].length <= 90) { before = closePart(); part = Number(heading[1]); }
+          else if (/^à retenir/i.test(lines[0])) { before = closePart(); part = 0; }
+          let html = ''; let list = [];
+          const flush = () => { if (list.length) { html += `<ul>${list.map((item) => `<li>${inlineMarkup(item)}</li>`).join('')}</ul>`; list = []; } };
+          lines.forEach((line, index) => {
+            const schema = /^\[\[(.+)\]\]$/.exec(line);
+            if (schema) { flush(); html += renderSchema(schema[1]); return; }
+            if (/^[-•]\s+/.test(line)) { list.push(line.replace(/^[-•]\s+/, '')); return; }
+            flush();
+            if (index === 0 && /^\d+\.\s+\S/.test(line) && line.length <= 90) html += `<h4 class="course-h">${inlineMarkup(line)}</h4>`;
+            else html += `<p>${inlineMarkup(line)}</p>`;
+          });
+          flush();
+          const kind = /^à retenir/i.test(lines[0]) ? 'keep' : /^exemples?\b/i.test(lines[0]) ? 'example' : /^attention\b/i.test(lines[0]) ? 'warn'
+            : /^définitions?\b/i.test(lines[0]) ? 'define' : /^astuces?\b/i.test(lines[0]) ? 'tip' : '';
+          return before + (kind ? `<div class="course-box ${kind}">${html}</div>` : html);
+        }).join('') + closePart();
+      }
+      function svgFigure(viewBox, inner, maxWidth, label) {
+        return `<figure class="schema"><svg viewBox="${viewBox}" style="max-width:${maxWidth}px" role="img" aria-label="${escapeHtml(label)}">${inner}</svg></figure>`;
+      }
+      function svgText(x, y, text, extra = '') { return `<text x="${x}" y="${y}" ${extra}>${escapeHtml(text)}</text>`; }
+      function wrapLabel(text, max) {
+        const words = String(text).split(/\s+/); const lines = [''];
+        words.forEach((word) => { if ((lines[lines.length - 1] + ' ' + word).trim().length > max && lines[lines.length - 1]) lines.push(word); else lines[lines.length - 1] = `${lines[lines.length - 1]} ${word}`.trim(); });
+        return lines.slice(0, 3);
+      }
+      // Données de la carte simplifiée de France (latitude, longitude approximatives).
+      const FRANCE_MAP = {
+        outline: [[51.05, 2.37], [50.95, 1.85], [50.73, 1.6], [50.2, 1.6], [49.9, 1.4], [49.5, 0.1], [49.35, -0.4], [49.7, -1.6], [48.85, -1.6], [48.65, -2.0], [48.8, -3.2], [48.6, -4.6], [48.35, -4.8], [47.95, -4.4], [47.7, -3.4], [47.5, -2.8], [47.27, -2.2], [46.8, -2.1], [46.15, -1.15], [45.6, -1.05], [45.0, -1.2], [44.65, -1.25], [43.48, -1.56], [43.36, -1.78], [43.05, -1.2], [42.8, 0.0], [42.7, 1.5], [42.45, 2.6], [42.44, 3.17], [42.9, 3.05], [43.35, 3.6], [43.45, 4.6], [43.3, 5.37], [43.1, 5.95], [43.25, 6.65], [43.7, 7.27], [43.78, 7.5], [44.4, 6.9], [45.1, 7.1], [45.9, 6.95], [46.2, 6.1], [46.6, 6.4], [47.3, 7.0], [47.58, 7.6], [48.58, 7.8], [48.97, 8.2], [49.1, 7.2], [49.5, 6.3], [49.55, 5.8], [49.8, 4.85], [50.1, 4.85], [50.0, 4.2], [50.3, 4.0], [50.5, 3.5], [50.75, 3.0]],
+        corse: [[43.0, 9.4], [42.6, 9.5], [42.0, 9.4], [41.4, 9.2], [41.6, 8.8], [42.1, 8.6], [42.5, 8.6], [42.95, 9.35]],
+        rivers: {
+          Seine: [[47.48, 4.72], [48.3, 4.08], [48.4, 3.0], [48.86, 2.35], [49.0, 2.0], [49.44, 1.1], [49.46, 0.2]],
+          Loire: [[44.84, 4.22], [45.4, 4.1], [46.04, 4.07], [46.99, 3.16], [47.4, 2.9], [47.9, 1.9], [47.59, 1.33], [47.39, 0.69], [47.26, -0.08], [47.4, -0.6], [47.22, -1.55], [47.27, -2.2]],
+          Rhône: [[46.2, 6.1], [45.9, 5.8], [45.76, 4.84], [44.93, 4.89], [43.95, 4.81], [43.68, 4.63], [43.35, 4.75]],
+          Garonne: [[42.75, 0.7], [43.1, 0.7], [43.6, 1.44], [44.2, 0.62], [44.84, -0.58], [45.6, -1.05]],
+          Rhin: [[47.58, 7.6], [48.58, 7.8], [48.97, 8.2]],
+        },
+        mountains: { Alpes: [45.4, 6.5], Pyrénées: [42.85, 0.6], 'Massif central': [45.3, 2.9], Jura: [46.75, 6.15], Vosges: [48.1, 6.95] },
+        cities: {
+          Paris: [48.86, 2.35], Lyon: [45.76, 4.84], Marseille: [43.3, 5.37], Toulouse: [43.6, 1.44], Nice: [43.7, 7.27], Nantes: [47.22, -1.55], Strasbourg: [48.57, 7.75],
+          Montpellier: [43.61, 3.88], Bordeaux: [44.84, -0.58], Lille: [50.63, 3.06], Rennes: [48.11, -1.68], Reims: [49.26, 4.03], 'Le Havre': [49.49, 0.11], Brest: [48.39, -4.49],
+          Grenoble: [45.19, 5.72], Dijon: [47.32, 5.04], 'Clermont-Ferrand': [45.78, 3.08], Orléans: [47.9, 1.9], Rouen: [49.44, 1.1], Tours: [47.39, 0.69], Limoges: [45.83, 1.26],
+          Ajaccio: [41.93, 8.74], Metz: [49.12, 6.18], Perpignan: [42.7, 2.9], Caen: [49.18, -0.37], Amiens: [49.89, 2.3], Besançon: [47.24, 6.02], Poitiers: [46.58, 0.34],
+          'La Rochelle': [46.16, -1.15], Bayonne: [43.49, -1.47], Avignon: [43.95, 4.81], Toulon: [43.12, 5.93], Nancy: [48.69, 6.18], Pau: [43.3, -0.37],
+        },
+      };
+      const SCHEMAS = {
+        fraction(args) {
+          // « fraction 3/8 » ou « fraction 3/8 cache » (sans le texte « 3/8 » sous le disque, pour ne pas donner la réponse).
+          const [value, option = ''] = args.split(/\s+/); const hideText = option === 'cache';
+          const [n, d] = value.split('/').map(Number);
+          if (!(d >= 1 && d <= 12 && n >= 0 && n <= d)) return '';
+          let parts = '';
+          if (d === 1) parts = `<circle cx="70" cy="70" r="60" class="${n ? 'sch-fill' : 'sch-empty'}"/>`;
+          for (let i = 0; d > 1 && i < d; i += 1) {
+            const a0 = -Math.PI / 2 + 2 * Math.PI * i / d; const a1 = -Math.PI / 2 + 2 * Math.PI * (i + 1) / d;
+            parts += `<path d="M70,70 L${(70 + 60 * Math.cos(a0)).toFixed(2)},${(70 + 60 * Math.sin(a0)).toFixed(2)} A60,60 0 ${a1 - a0 > Math.PI ? 1 : 0} 1 ${(70 + 60 * Math.cos(a1)).toFixed(2)},${(70 + 60 * Math.sin(a1)).toFixed(2)} Z" class="${i < n ? 'sch-fill' : 'sch-empty'}"/>`;
+          }
+          if (hideText) return svgFigure('0 0 140 140', parts, 150, `Disque partagé en ${d} parts égales`);
+          return svgFigure('0 0 140 165', `${parts}${svgText(70, 158, `${n}/${d}`, 'text-anchor="middle" class="sch-big"')}`, 170, `Fraction ${n} sur ${d}`);
+        },
+        droite(args) {
+          // « min|max|pas|points|entiers » : l'option « entiers » n'écrit que les nombres entiers sous la droite
+          // (les graduations intermédiaires restent dessinées, sans valeur décimale qui donnerait la réponse).
+          const [min, max, step, pointsText = '', option = ''] = args.split('|'); const lo = Number(min); const hi = Number(max); const st = Number(step);
+          if (!(hi > lo && st > 0)) return '';
+          const integersOnly = option.trim() === 'entiers';
+          const x = (value) => 30 + (value - lo) / (hi - lo) * 500; const count = Math.round((hi - lo) / st);
+          const every = Math.ceil((count + 1) / 21);
+          let inner = `<line x1="20" y1="70" x2="545" y2="70" class="sch-line"/><path d="M545,64 L556,70 L545,76 Z" class="sch-ink"/>`;
+          for (let i = 0; i <= count && i <= 200; i += 1) {
+            const value = lo + i * st;
+            const major = integersOnly ? Math.abs(value - Math.round(value)) < 1e-9 : i % every === 0;
+            inner += `<line x1="${x(value)}" y1="${major ? 60 : 64}" x2="${x(value)}" y2="${major ? 80 : 76}" class="sch-line"/>`;
+            if (major) inner += svgText(x(value), 98, formatScaleValue(Number(value.toFixed(6))), 'text-anchor="middle" class="sch-small"');
+          }
+          pointsText.split(',').filter(Boolean).forEach((point) => {
+            const [value, label] = point.split(':'); const v = Number(value);
+            if (!Number.isFinite(v)) return;
+            inner += `<circle cx="${x(v)}" cy="70" r="6" class="sch-dot"/>${svgText(x(v), 45, label || formatScaleValue(v), 'text-anchor="middle" class="sch-label"')}`;
+          });
+          return svgFigure('0 0 570 110', inner, 620, 'Droite graduée');
+        },
+        frise(args) {
+          const events = args.split('|').map((part) => { const at = part.indexOf(':'); return { year: Number(part.slice(0, at)), label: part.slice(at + 1).trim() }; })
+            .filter((event) => Number.isFinite(event.year)).sort((a, b) => a.year - b.year);
+          if (!events.length) return '';
+          const lo = events[0].year; const hi = events[events.length - 1].year; const span = hi - lo || 1;
+          const x = (year, index) => (events.length === 1 ? 300 : 50 + ((year - lo) / span) * 0.6 * 500 + (index / (events.length - 1)) * 0.4 * 500);
+          let inner = `<line x1="20" y1="110" x2="580" y2="110" class="sch-line thick"/><path d="M578,103 L592,110 L578,117 Z" class="sch-ink"/>`;
+          events.forEach((event, index) => {
+            const up = index % 2 === 0; const cx = x(event.year, index);
+            inner += `<circle cx="${cx}" cy="110" r="7" class="sch-dot"/><line x1="${cx}" y1="${up ? 102 : 118}" x2="${cx}" y2="${up ? 78 : 142}" class="sch-line"/>`;
+            inner += svgText(cx, up ? 70 : 160, event.year < 0 ? `${-event.year} av. J.-C.` : String(event.year), 'text-anchor="middle" class="sch-year"');
+            wrapLabel(event.label, 18).forEach((line, lineIndex) => {
+              inner += svgText(cx, up ? 54 - (wrapLabel(event.label, 18).length - 1 - lineIndex) * 15 : 176 + lineIndex * 15, line, 'text-anchor="middle" class="sch-small"');
+            });
+          });
+          return svgFigure('0 0 600 215', inner, 680, 'Frise chronologique');
+        },
+        horloge(args) {
+          const [h, m] = args.split(':').map(Number);
+          let inner = '<circle cx="80" cy="80" r="72" class="sch-clock"/>';
+          for (let i = 1; i <= 12; i += 1) {
+            const a = (i * 30 - 90) * Math.PI / 180;
+            inner += svgText((80 + 56 * Math.cos(a)).toFixed(1), (85 + 56 * Math.sin(a)).toFixed(1), String(i), 'text-anchor="middle" class="sch-small"');
+          }
+          const hand = (angle, length, cls) => { const a = (angle - 90) * Math.PI / 180; return `<line x1="80" y1="80" x2="${(80 + length * Math.cos(a)).toFixed(1)}" y2="${(80 + length * Math.sin(a)).toFixed(1)}" class="${cls}"/>`; };
+          inner += hand(((h % 12) + m / 60) * 30, 38, 'sch-hand hour') + hand(m * 6, 58, 'sch-hand') + '<circle cx="80" cy="80" r="4" class="sch-ink"/>';
+          return svgFigure('0 0 160 160', inner, 180, `Horloge ${h} h ${m}`);
+        },
+        tableau(args) {
+          const rows = args.split(';').map((row) => row.split('|').map((cell) => cell.trim()));
+          return `<div class="schema table-wrap"><table class="sch-table"><thead><tr>${rows[0].map((cell) => `<th>${inlineMarkup(cell)}</th>`).join('')}</tr></thead><tbody>${rows.slice(1).map((row) => `<tr>${row.map((cell) => `<td>${inlineMarkup(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+        },
+        barres(args) {
+          const bars = args.split('|').map((part) => { const at = part.lastIndexOf(':'); return { label: part.slice(0, at).trim(), value: Number(part.slice(at + 1)) }; }).filter((bar) => Number.isFinite(bar.value));
+          if (!bars.length) return '';
+          const top = Math.max(...bars.map((bar) => bar.value), 1); const width = 500 / bars.length;
+          const inner = bars.map((bar, index) => {
+            const height = Math.max(2, bar.value / top * 130); const x = 40 + index * width;
+            return `<rect x="${x + width * 0.18}" y="${160 - height}" width="${width * 0.64}" height="${height}" rx="4" class="sch-fill"/>${svgText(x + width / 2, 152 - height, formatScaleValue(bar.value), 'text-anchor="middle" class="sch-label"')}${svgText(x + width / 2, 180, bar.label.slice(0, 14), 'text-anchor="middle" class="sch-small"')}`;
+          }).join('');
+          return svgFigure('0 0 580 195', `<line x1="35" y1="160" x2="550" y2="160" class="sch-line"/>${inner}`, 620, 'Diagramme en barres');
+        },
+        figure(args) {
+          const [shape, ...rest] = args.split(' '); const sizes = rest.join(' ').split('|').map((part) => part.trim()).filter(Boolean);
+          const label = (x, y, text, anchor = 'middle') => svgText(x, y, text || '', `text-anchor="${anchor}" class="sch-label"`);
+          if (shape === 'carre') return svgFigure('0 0 220 200', `<rect x="50" y="20" width="130" height="130" class="sch-shape"/>${label(115, 172, sizes[0])}${label(192, 90, sizes[0], 'start')}`, 240, 'Carré');
+          if (shape === 'rectangle') return svgFigure('0 0 300 170', `<rect x="30" y="20" width="200" height="100" class="sch-shape"/>${label(130, 142, sizes[0])}${label(242, 75, sizes[1] || '', 'start')}`, 320, 'Rectangle');
+          if (shape === 'triangle') return svgFigure('0 0 280 190', `<path d="M40,150 L220,150 L40,30 Z" class="sch-shape"/><path d="M40,136 L54,136 L54,150" class="sch-line"/>${label(130, 172, sizes[0])}${label(30, 95, sizes[1] || '', 'end')}${label(142, 80, sizes[2] || '', 'start')}`, 300, 'Triangle');
+          if (shape === 'cercle') return svgFigure('0 0 200 180', `<circle cx="90" cy="90" r="70" class="sch-shape"/><line x1="90" y1="90" x2="160" y2="90" class="sch-line"/><circle cx="90" cy="90" r="3" class="sch-ink"/>${label(125, 80, sizes[0])}`, 220, 'Cercle');
+          return '';
+        },
+        // « image URL|légende|crédit » : photo ou carte libre de droits, hébergée sur Wikimedia Commons uniquement.
+        image(args) {
+          const [url = '', caption = '', credit = ''] = args.split('|').map((part) => part.trim());
+          if (!/^https:\/\/upload\.wikimedia\.org\/[^\s"'<>]+$/.test(url)) return '';
+          // Légende vide (dans une question) : l'image s'affiche sans texte qui donnerait la réponse.
+          return `<figure class="schema photo"><img src="${escapeHtml(url)}" alt="${escapeHtml(caption || 'Image de la question')}" loading="lazy" referrerpolicy="no-referrer"><figcaption>${escapeHtml(caption)}${credit ? `<small>${escapeHtml(credit)}</small>` : ''}</figcaption></figure>`;
+        },
+        // « repere xmin|xmax|ymin|ymax|A:-3:2,B:2:-1|A-B » : repère quadrillé, points nommés et segments facultatifs.
+        repere(args) {
+          const [x0, x1, y0, y1, pointsText = '', segmentsText = ''] = args.split('|');
+          const xmin = Number(x0); const xmax = Number(x1); const ymin = Number(y0); const ymax = Number(y1);
+          if (![xmin, xmax, ymin, ymax].every(Number.isFinite) || xmax <= xmin || ymax <= ymin || xmax - xmin > 40 || ymax - ymin > 40) return '';
+          const u = Math.min(36, 460 / (xmax - xmin), 360 / (ymax - ymin)); const pad = 32;
+          const W = (xmax - xmin) * u + 2 * pad; const H = (ymax - ymin) * u + 2 * pad;
+          const X = (v) => pad + (v - xmin) * u; const Y = (v) => pad + (ymax - v) * u;
+          const step = xmax - xmin > 20 || ymax - ymin > 20 ? 2 : 1;
+          const ax = xmin <= 0 && xmax >= 0 ? X(0) : X(xmin); const ay = ymin <= 0 && ymax >= 0 ? Y(0) : Y(ymin);
+          let inner = '';
+          for (let v = Math.ceil(xmin); v <= xmax; v += 1) inner += `<line x1="${X(v)}" y1="${Y(ymin)}" x2="${X(v)}" y2="${Y(ymax)}" class="sch-grid"/>`;
+          for (let v = Math.ceil(ymin); v <= ymax; v += 1) inner += `<line x1="${X(xmin)}" y1="${Y(v)}" x2="${X(xmax)}" y2="${Y(v)}" class="sch-grid"/>`;
+          inner += `<line x1="${X(xmin)}" y1="${ay}" x2="${X(xmax) + 14}" y2="${ay}" class="sch-axis"/><path d="M${X(xmax) + 14},${ay - 5} L${X(xmax) + 22},${ay} L${X(xmax) + 14},${ay + 5} Z" class="sch-ink"/>`;
+          inner += `<line x1="${ax}" y1="${Y(ymin)}" x2="${ax}" y2="${Y(ymax) - 14}" class="sch-axis"/><path d="M${ax - 5},${Y(ymax) - 14} L${ax},${Y(ymax) - 22} L${ax + 5},${Y(ymax) - 14} Z" class="sch-ink"/>`;
+          for (let v = Math.ceil(xmin); v <= xmax; v += 1) if (v !== 0 && v % step === 0) inner += svgText(X(v), ay + 16, formatScaleValue(v), 'text-anchor="middle" class="sch-small"');
+          for (let v = Math.ceil(ymin); v <= ymax; v += 1) if (v !== 0 && v % step === 0) inner += svgText(ax - 6, Y(v) + 4, formatScaleValue(v), 'text-anchor="end" class="sch-small"');
+          if (xmin <= 0 && xmax >= 0 && ymin <= 0 && ymax >= 0) inner += svgText(ax - 6, ay + 16, 'O', 'text-anchor="end" class="sch-small"');
+          const points = pointsText.split(',').map((part) => part.split(':')).filter((p) => p.length === 3)
+            .map(([label, x, y]) => ({ label: label.trim(), x: Number(x), y: Number(y) })).filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y));
+          segmentsText.split(',').map((part) => part.split('-').map((s) => s.trim())).forEach(([a, b]) => {
+            const p = points.find((item) => item.label === a); const q = points.find((item) => item.label === b);
+            if (p && q) inner += `<line x1="${X(p.x)}" y1="${Y(p.y)}" x2="${X(q.x)}" y2="${Y(q.y)}" class="sch-seg"/>`;
+          });
+          points.forEach((p) => { inner += `<circle cx="${X(p.x)}" cy="${Y(p.y)}" r="5" class="sch-dot"/>${svgText(X(p.x) + 8, Y(p.y) - 8, p.label, 'class="sch-label"')}`; });
+          return svgFigure(`0 0 ${W} ${H}`, inner, Math.round(Math.min(560, W * 1.25)), 'Repère du plan');
+        },
+        // « circuit serie|pile,lampe:L1,interrupteur-ferme » ou « circuit derivation|lampe:L1|lampe:L2,moteur » (une branche par « | »).
+        // Composants : lampe, moteur, del, interrupteur-ouvert, interrupteur-ferme (la pile est ajoutée d'office à gauche).
+        circuit(args) {
+          const [modeText = '', ...groups] = args.split('|').map((part) => part.trim());
+          const mode = modeText.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+          const parse = (text) => text.split(',').map((part) => part.trim()).filter(Boolean).filter((part) => !/^pile/.test(part))
+            .map((part) => { const [type, label = ''] = part.split(':'); return { type: type.trim(), label: label.trim() }; });
+          const draw = (c, x, y) => {
+            const erase = `<rect x="${x - 17}" y="${y - 4}" width="34" height="8" class="sch-erase"/>`;
+            const name = c.label ? svgText(x, y - 22, c.label, 'text-anchor="middle" class="sch-small"') : '';
+            if (c.type === 'lampe') return `<circle cx="${x}" cy="${y}" r="14" class="sch-comp"/><path d="M${x - 10},${y - 10} L${x + 10},${y + 10} M${x - 10},${y + 10} L${x + 10},${y - 10}" class="sch-wire"/>${name}`;
+            if (c.type === 'moteur') return `<circle cx="${x}" cy="${y}" r="14" class="sch-comp"/>${svgText(x, y + 6, 'M', 'text-anchor="middle" class="sch-label"')}${name}`;
+            if (c.type === 'del') return `<path d="M${x - 9},${y - 11} L${x - 9},${y + 11} L${x + 9},${y} Z" class="sch-comp"/><path d="M${x + 10},${y - 11} L${x + 10},${y + 11} M${x + 2},${y - 14} L${x + 10},${y - 24} M${x + 8},${y - 12} L${x + 16},${y - 22}" class="sch-wire thin"/>${name}`;
+            if (c.type === 'interrupteur-ferme') return `${erase}<path d="M${x - 14},${y} L${x + 14},${y}" class="sch-wire"/><circle cx="${x - 14}" cy="${y}" r="3" class="sch-ink"/><circle cx="${x + 14}" cy="${y}" r="3" class="sch-ink"/>${name}`;
+            if (c.type === 'interrupteur-ouvert') return `${erase}<path d="M${x - 14},${y} L${x + 11},${y - 14}" class="sch-wire"/><circle cx="${x - 14}" cy="${y}" r="3" class="sch-ink"/><circle cx="${x + 14}" cy="${y}" r="3" class="sch-ink"/>${name}`;
+            return `<rect x="${x - 16}" y="${y - 11}" width="32" height="22" class="sch-comp"/>${svgText(x, y + 5, c.type.slice(0, 3), 'text-anchor="middle" class="sch-small"')}${name}`;
+          };
+          const pile = (x, y) => `<rect x="${x - 4}" y="${y - 10}" width="8" height="20" class="sch-erase"/><path d="M${x - 16},${y - 5} L${x + 16},${y - 5}" class="sch-wire thin"/><path d="M${x - 8},${y + 5} L${x + 8},${y + 5}" class="sch-wire thick"/>${svgText(x + 22, y - 2, '+', 'class="sch-label"')}${svgText(x + 22, y + 16, '−', 'class="sch-label"')}`;
+          const spread = (list, x0, x1, y) => list.map((c, i) => draw(c, Math.round(x0 + (i + 1) * (x1 - x0) / (list.length + 1)), y)).join('');
+          if (mode === 'serie') {
+            const comps = parse(groups[0] || ''); if (!comps.length) return '';
+            const top = comps.length > 3 ? comps.slice(0, Math.ceil(comps.length / 2)) : comps; const bottom = comps.slice(top.length);
+            const inner = `<rect x="50" y="40" width="460" height="160" class="sch-wire" fill="none"/>${pile(50, 120)}${spread(top, 50, 510, 40)}${spread(bottom, 50, 510, 200)}`;
+            return svgFigure('0 0 560 235', inner, 560, 'Schéma d’un circuit en série');
+          }
+          if (mode === 'derivation') {
+            const rows = groups.map(parse).filter((list) => list.length); if (rows.length < 2) return '';
+            const gap = 75; const y0 = 45; const yLast = y0 + (rows.length - 1) * gap; const yBot = yLast + 50; const yPile = (y0 + yBot) / 2;
+            let inner = `<path d="M130,${y0} L50,${y0} L50,${yBot} L510,${yBot} L510,${y0}" class="sch-wire" fill="none"/><path d="M130,${y0} L130,${yLast}" class="sch-wire"/>`;
+            rows.forEach((list, i) => { const y = y0 + i * gap; inner += `<path d="M130,${y} L510,${y}" class="sch-wire"/>`; if (i > 0 && i < rows.length) inner += `<circle cx="130" cy="${y}" r="4" class="sch-ink"/><circle cx="510" cy="${y}" r="4" class="sch-ink"/>`; inner += spread(list, 130, 510, y); });
+            inner += `<circle cx="130" cy="${y0}" r="4" class="sch-ink"/><circle cx="510" cy="${y0}" r="4" class="sch-ink"/>${pile(50, yPile)}`;
+            return svgFigure(`0 0 560 ${yBot + 30}`, inner, 560, 'Schéma d’un circuit en dérivation');
+          }
+          return '';
+        },
+        // « carte france|Paris,Lyon,A=Bordeaux,Nom:lat:lon|fleuves|montagnes » : carte simplifiée de la France métropolitaine.
+        carte(args) {
+          const [zone = '', pointsText = '', ...flags] = args.split('|').map((part) => part.trim());
+          if (zone.toLowerCase() !== 'france') return '';
+          const P = (lat, lon) => [Math.round((20 + (lon + 5.2) * 0.688 * 46) * 10) / 10, Math.round((20 + (51.3 - lat) * 46) * 10) / 10];
+          const path = (list, close) => list.map(([lat, lon], i) => { const [x, y] = P(lat, lon); return `${i ? 'L' : 'M'}${x.toFixed(1)},${y.toFixed(1)}`; }).join(' ') + (close ? ' Z' : '');
+          let inner = `<path d="${path(FRANCE_MAP.outline, true)}" class="sch-land"/><path d="${path(FRANCE_MAP.corse, true)}" class="sch-land"/>`;
+          // « fleuves » : tracés avec leur nom ; « fleuves-muets » : tracés sans nom (pour une question).
+          if (flags.includes('fleuves') || flags.includes('fleuves-muets')) Object.entries(FRANCE_MAP.rivers).forEach(([name, list]) => {
+            inner += `<path d="${path(list, false)}" class="sch-river"/>`;
+            if (flags.includes('fleuves')) { const [x, y] = P(...list[Math.floor(list.length / 2)]); inner += svgText(x + 6, y - 6, name, 'class="sch-river-name"'); }
+          });
+          if (flags.includes('montagnes')) Object.entries(FRANCE_MAP.mountains).forEach(([name, [lat, lon]]) => {
+            const [x, y] = P(lat, lon); inner += `<path d="M${x - 8},${y + 6} L${x},${y - 7} L${x + 8},${y + 6} Z" class="sch-mount"/>${svgText(x, y + 20, name, 'text-anchor="middle" class="sch-small"')}`;
+          });
+          pointsText.split(',').map((part) => part.trim()).filter(Boolean).forEach((part) => {
+            let label = part; let place = part; const eq = part.indexOf('=');
+            if (eq > 0) { label = part.slice(0, eq).trim(); place = part.slice(eq + 1).trim(); }
+            const custom = place.split(':'); const coords = custom.length === 3 ? [Number(custom[1]), Number(custom[2])] : FRANCE_MAP.cities[place];
+            if (custom.length === 3 && eq < 0) label = custom[0].trim();
+            if (!coords || !coords.every(Number.isFinite)) return;
+            const [x, y] = P(coords[0], coords[1]);
+            inner += `<circle cx="${x}" cy="${y}" r="5" class="sch-dot"/>${svgText(x + 8, y + 5, label, 'class="sch-label"')}`;
+          });
+          return svgFigure('0 0 520 510', inner, 480, 'Carte simplifiée de la France');
+        },
+        etapes(args) { return flowSchema(args.split('|'), false); },
+        cycle(args) { return flowSchema(args.split('|'), true); },
+      };
+      function flowSchema(steps, loop) {
+        const items = steps.map((step) => step.trim()).filter(Boolean);
+        return `<div class="schema flow${loop ? ' loop' : ''}">${items.map((step, index) => `<span class="flow-step"><b>${index + 1}</b>${inlineMarkup(step)}</span>`).join('<span class="flow-arrow">→</span>')}${loop ? `<span class="flow-arrow">↺</span><span class="flow-step back">retour à ${inlineMarkup(items[0] || '')}</span>` : ''}</div>`;
+      }
+      function renderSchema(spec) {
+        const text = String(spec || '').trim(); const space = text.indexOf(' ');
+        const type = space < 0 ? text : text.slice(0, space); const args = space < 0 ? '' : text.slice(space + 1).trim();
+        try { return SCHEMAS[type] && args ? SCHEMAS[type](args) : ''; } catch (error) { return ''; }
+      }
+      // ----- Types de questions (même correction que gradeAnswer_ dans Code.gs) -----
+      const TYPE_LABELS = { qcm: 'QCM', 'vrai-faux': 'Vrai ou faux', saisie: 'Réponse à écrire', ordre: 'Remets dans l’ordre', association: 'Relie les paires', echelle: 'Place le curseur' };
+      function questionType(question) { return question.type || 'qcm'; }
+      function isChoiceType(question) { return ['qcm', 'vrai-faux'].includes(questionType(question)); }
+      function normalizeAnswerText(value) {
+        return String(value === undefined || value === null ? '' : value).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+          .replace(/[’']/g, "'").replace(/(\d)[\s  ]+(?=\d)/g, '$1').replace(/(\d),(\d)/g, '$1.$2')
+          .replace(/[.!?;:]+$/, '').replace(/\s+/g, ' ').trim();
+      }
+      function gradeAnswer(question, response) {
+        const type = questionType(question);
+        if (type === 'qcm' || type === 'vrai-faux') return String(response) === question.answers[question.correctIndex];
+        if (type === 'saisie') return question.answers.some((accepted) => normalizeAnswerText(accepted) === normalizeAnswerText(response));
+        if (type === 'ordre') return Array.isArray(response) && response.length === question.answers.length && question.answers.every((item, index) => response[index] === item);
+        if (type === 'association') return Array.isArray(response) && response.length === question.answers.length && question.answers.every((pair) => response.includes(pair));
+        if (type === 'echelle') return Math.abs(Number(response) - Number(question.answers[0])) <= ((question.scale && Number(question.scale.tolerance)) || 0) + 1e-9;
+        return false;
+      }
+      function correctAnswerText(question) {
+        const type = questionType(question);
+        if (type === 'qcm' || type === 'vrai-faux') return question.answers[question.correctIndex];
+        if (type === 'saisie') return question.answers[0];
+        if (type === 'ordre') return question.answers.join(' → ');
+        if (type === 'association') return question.answers.map((pair) => pair.replace(' :: ', ' ↔ ')).join(' · ');
+        if (type === 'echelle') return `${formatScaleValue(question.answers[0])}${question.scale && question.scale.unit ? ` ${question.scale.unit}` : ''}`;
+        return '';
+      }
+      function responseText(question, response) {
+        const type = questionType(question);
+        if (type === 'ordre') return response.join(' → ');
+        if (type === 'association') return response.map((pair) => pair.replace(' :: ', ' ↔ ')).join(' · ');
+        if (type === 'echelle') return `${formatScaleValue(response)}${question.scale && question.scale.unit ? ` ${question.scale.unit}` : ''}`;
+        return String(response || '—');
+      }
+      function formatScaleValue(value) { return Number(value).toLocaleString('fr-FR', { maximumFractionDigits: 3 }); }
+      function questionBodyHtml(question) {
+        const type = questionType(question);
+        if (type === 'qcm') {
+          return `<div class="answers">${shuffle(question.answers.map((text, index) => ({ text, index }))).map((answer, index) => `<button class="answer" data-answer="${answer.index}">${String.fromCharCode(65 + index)}. ${escapeHtml(answer.text)}</button>`).join('')}</div>`;
+        }
+        if (type === 'vrai-faux') return `<div class="answers vf">${question.answers.map((text, index) => `<button class="answer" data-answer="${index}">${index === 0 ? '👍' : '👎'} ${escapeHtml(text)}</button>`).join('')}</div>`;
+        if (type === 'saisie') return `<form class="typed" id="typedForm"><input id="typedInput" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Écris ta réponse…" aria-label="Ta réponse" required><button class="btn primary" type="submit">Valider</button></form>`;
+        if (type === 'ordre') {
+          return `<p class="small">Clique les étiquettes dans le bon ordre.</p><div class="chips" id="orderPool">${shuffle(question.answers.slice()).map((item) => `<button type="button" class="chip" data-item="${escapeHtml(item)}">${escapeHtml(item)}</button>`).join('')}</div><ol class="order-list" id="orderList"></ol><div class="row-actions"><button type="button" class="btn secondary" id="orderReset">Recommencer</button><button type="button" class="btn primary" id="orderCheck" disabled>Valider</button></div>`;
+        }
+        if (type === 'association') {
+          const pairs = question.answers.map((pair) => pair.split(' :: '));
+          const rights = shuffle(pairs.map((pair) => pair[1]));
+          return `<div class="match">${pairs.map((pair, index) => `<label class="match-row"><span>${escapeHtml(pair[0])}</span><select data-left="${escapeHtml(pair[0])}" data-row="${index}"><option value="">Choisir…</option>${rights.map((right) => `<option value="${escapeHtml(right)}">${escapeHtml(right)}</option>`).join('')}</select></label>`).join('')}</div><div class="row-actions"><button type="button" class="btn primary" id="matchCheck" disabled>Valider</button></div>`;
+        }
+        if (type === 'echelle') {
+          const scale = question.scale || { min: 0, max: 10, step: 1 };
+          const start = scale.min + Math.round((scale.max - scale.min) / scale.step / 2) * scale.step;
+          return `<div class="scale"><output id="scaleValue" class="scale-value">${formatScaleValue(start)}${scale.unit ? ` ${escapeHtml(scale.unit)}` : ''}</output><input type="range" id="scaleInput" min="${scale.min}" max="${scale.max}" step="${scale.step}" value="${start}" aria-label="Valeur"><div class="scale-ends"><span>${formatScaleValue(scale.min)}</span><span>${formatScaleValue(scale.max)}</span></div></div><div class="row-actions"><button type="button" class="btn primary" id="scaleCheck">Valider</button></div>`;
+        }
+        return '';
+      }
+      function bindQuestionBody(question) {
+        const type = questionType(question);
+        if (isChoiceType(question)) {
+          document.querySelectorAll('#questionBody .answer').forEach((button) => { button.onclick = () => submitResponse(question.answers[Number(button.dataset.answer)]); });
+        } else if (type === 'saisie') {
+          $('typedInput').focus();
+          $('typedForm').onsubmit = (event) => { event.preventDefault(); if ($('typedInput').value.trim()) submitResponse($('typedInput').value.trim()); };
+        } else if (type === 'ordre') {
+          const picked = [];
+          const refresh = () => {
+            $('orderList').innerHTML = picked.map((item) => `<li>${escapeHtml(item)}</li>`).join('');
+            document.querySelectorAll('#orderPool .chip').forEach((chip) => { chip.disabled = picked.includes(chip.dataset.item); });
+            $('orderCheck').disabled = picked.length !== question.answers.length;
+          };
+          document.querySelectorAll('#orderPool .chip').forEach((chip) => { chip.onclick = () => { if (!picked.includes(chip.dataset.item)) { picked.push(chip.dataset.item); refresh(); } }; });
+          $('orderReset').onclick = () => { picked.length = 0; refresh(); };
+          $('orderCheck').onclick = () => submitResponse(picked.slice());
+        } else if (type === 'association') {
+          const selects = [...document.querySelectorAll('#questionBody .match select')];
+          selects.forEach((select) => { select.onchange = () => { $('matchCheck').disabled = selects.some((item) => !item.value); }; });
+          $('matchCheck').onclick = () => submitResponse(selects.map((select) => `${select.dataset.left} :: ${select.value}`));
+        } else if (type === 'echelle') {
+          const unit = question.scale && question.scale.unit ? ` ${question.scale.unit}` : '';
+          $('scaleInput').oninput = () => { $('scaleValue').textContent = `${formatScaleValue($('scaleInput').value)}${unit}`; };
+          $('scaleCheck').onclick = () => submitResponse(Number($('scaleInput').value));
+        }
+      }
+      function drawQuestion() {
+        locked = false;
+        if (questionIndex >= round.length) { finishRound(); return; }
+        const question = round[questionIndex]; const subject = (question._subjectKey && app.bank.subjects[question._subjectKey]) || currentSubject(); stopSpeaking();
+        const streakBadge = streak >= 2 ? `<span class="streak">🔥 ${streak} d’affilée</span>` : '';
+        $('game').innerHTML = `<div class="panelhead"><div class="icon">${escapeHtml(subject.icon || '📘')}</div><div><h2>${escapeHtml(subject.name)}</h2><p>Question ${questionIndex + 1} sur ${round.length} · <span class="type-badge">${TYPE_LABELS[questionType(question)] || 'QCM'}</span> ${mixedMode ? `<span class="type-badge">${MIXED_LABELS[mixedMode]}</span> ` : ''}${practicePart ? `<span class="type-badge">🎯 Partie ${practicePart} du cours</span> ` : ''}${streakBadge}</p></div></div><div class="progress-track"><span style="width:${Math.round(questionIndex * 100 / round.length)}%"></span></div>${question.schema ? renderSchema(question.schema) : ''}<div class="prompt">${escapeHtml(question.question)}</div><div id="questionBody">${questionBodyHtml(question)}</div><div class="hint-box" id="hintBox" role="status" hidden></div><div class="feedback" id="feedback" role="status"></div><div class="actions"><span class="hint">Prends ton temps, tu vas y arriver 💪</span><span class="action-buttons">${canSpeak ? '<button class="btn secondary" id="speakQuestion" type="button" aria-label="Écouter la question">🔊</button>' : ''}${hintAvailable(question) ? '<button class="btn secondary" id="hintBtn" type="button">💡 Indice</button>' : ''}<button class="btn primary" id="next" disabled>Question suivante →</button></span></div>`;
+        hintUsed = false;
+        $('game').style.setProperty('--subject', subjectColor(question._subjectKey || activeSubject));
+        $('game').classList.remove('q-enter'); void $('game').offsetWidth; $('game').classList.add('q-enter');
+        if (questionIndex === 0) buddySay(pick(BUDDY_LINES.start));
+        bindQuestionBody(question);
+        if ($('hintBtn')) $('hintBtn').onclick = () => giveHint(question);
+        if ($('speakQuestion')) $('speakQuestion').onclick = () => speakQuestion(question, question._subjectKey || activeSubject);
+        $('next').onclick = () => { questionIndex += 1; drawQuestion(); };
+      }
+      // ----- Indice : texte « hint » de la question s'il existe, sinon aide automatique selon le type -----
+      let hintUsed = false;
+      function hintAvailable(question) {
+        return Boolean(question.hint) || ['qcm', 'saisie', 'ordre', 'association', 'echelle'].includes(questionType(question));
+      }
+      function giveHint(question) {
+        if (locked || hintUsed) return;
+        hintUsed = true;
+        const type = questionType(question); let text = '';
+        if (question.hint) text = question.hint;
+        else if (type === 'qcm') {
+          const wrong = shuffle([...document.querySelectorAll('#questionBody .answer')].filter((button) => Number(button.dataset.answer) !== question.correctIndex));
+          if (wrong[0]) { wrong[0].disabled = true; wrong[0].classList.add('eliminated'); }
+          text = 'Une mauvaise réponse a été retirée. Choisis entre les deux qui restent.';
+        } else if (type === 'saisie') {
+          const answer = String(question.answers[0]); const length = answer.replace(/\s/g, '').length;
+          text = length <= 1 ? 'La réponse tient en un seul caractère.' : `La réponse commence par « ${answer.charAt(0)} » et compte ${length} caractères.`;
+        } else if (type === 'ordre') {
+          text = `Le premier élément est : « ${question.answers[0]} ».`;
+        } else if (type === 'association') {
+          const [left, right] = question.answers[0].split(' :: ');
+          const select = [...document.querySelectorAll('#questionBody .match select')].find((item) => item.dataset.left === left);
+          if (select) { select.value = right; select.disabled = true; select.dispatchEvent(new Event('change')); }
+          text = `Une paire est déjà reliée : « ${left} » va avec « ${right} ».`;
+        } else if (type === 'echelle') {
+          const scale = question.scale || { min: 0, max: 10, step: 1 }; const value = Number(question.answers[0]);
+          const steps = Math.max(1, Math.round((scale.max - scale.min) / scale.step / 4));
+          const offset = Math.floor(Math.random() * (steps + 1));
+          const low = Math.max(scale.min, value - offset * scale.step); const high = Math.min(scale.max, low + steps * scale.step);
+          const unit = scale.unit ? ` ${scale.unit}` : '';
+          text = `La réponse se trouve entre ${formatScaleValue(Number(low.toFixed(6)))}${unit} et ${formatScaleValue(Number(high.toFixed(6)))}${unit}.`;
+        }
+        $('hintBox').textContent = `💡 ${text}`; $('hintBox').hidden = false; buddySay(pick(BUDDY_LINES.hint));
+        $('hintBtn').disabled = true;
+      }
+      function updateStats() { $('score').textContent = app.stats.stars; $('lessons').textContent = app.stats.lessons; }
+      function submitResponse(response) {
+        if (locked) return; locked = true;
+        const question = round[questionIndex]; const correct = gradeAnswer(question, response);
+        responses.push({ question: question.question, response, chosen: responseText(question, response), correct: correctAnswerText(question), ok: correct, explanation: question.explanation || '', hint: hintUsed });
+        if ($('hintBtn')) $('hintBtn').disabled = true;
+        streak = correct ? streak + 1 : 0;
+        if (isChoiceType(question)) {
+          document.querySelectorAll('#questionBody .answer').forEach((button) => {
+            button.disabled = true; const answer = question.answers[Number(button.dataset.answer)];
+            if (Number(button.dataset.answer) === question.correctIndex) button.classList.add('correct'); else if (answer === response) button.classList.add('wrong');
+          });
+        } else {
+          document.querySelectorAll('#questionBody button, #questionBody input, #questionBody select').forEach((element) => { element.disabled = true; });
+          $('questionBody').classList.add(correct ? 'body-ok' : 'body-wrong');
+        }
+        const feedback = $('feedback'); feedback.className = `feedback${correct ? '' : ' wrong'}`;
+        const solution = correct || isChoiceType(question) ? '' : `Réponse attendue : ${correctAnswerText(question)}. `;
+        const cheer = streak >= 3 ? ` 🔥 ${streak} bonnes réponses d’affilée !` : '';
+        feedback.textContent = correct ? `🌟 Bravo, bonne réponse !${cheer} ${question.explanation || ''}` : `🙂 Pas tout à fait ! ${solution}${question.explanation || ''}`;
+        if (correct) { app.stats.stars += 1; updateStats(); burstStars(document.querySelector('#questionBody .answer.correct') || $('questionBody'), streak); }
+        playTone(correct ? 'ok' : 'ko'); buddySay(pick(correct ? (streak >= 3 ? BUDDY_LINES.streak : BUDDY_LINES.ok) : BUDDY_LINES.ko), correct ? 'happy' : 'sad');
+        $('next').disabled = false; $('next').textContent = questionIndex === round.length - 1 ? 'Voir mon résultat →' : 'Question suivante →';
+        $('next').focus();
+      }
+      // Explosion d'étoiles autour de la bonne réponse ; plus grande à partir de 3 bonnes réponses d'affilée.
+      function burstStars(target, currentStreak) {
+        if (!target || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+        const box = target.getBoundingClientRect(); const big = currentStreak >= 3;
+        const layer = document.createElement('div'); layer.className = 'star-burst'; layer.setAttribute('aria-hidden', 'true');
+        layer.style.left = `${box.left + box.width / 2}px`; layer.style.top = `${box.top + box.height / 2}px`;
+        const count = big ? 16 : 9; const symbols = big ? ['⭐', '🌟', '✨', '💫'] : ['⭐', '✨'];
+        layer.innerHTML = Array.from({ length: count }, (_, index) => {
+          const angle = (index / count) * 2 * Math.PI + Math.random() * 0.4; const distance = (big ? 110 : 75) + Math.random() * 40;
+          return `<span style="--dx:${Math.round(Math.cos(angle) * distance)}px;--dy:${Math.round(Math.sin(angle) * distance)}px;--rot:${Math.round(Math.random() * 360 - 180)}deg;animation-delay:${(Math.random() * 0.12).toFixed(2)}s">${symbols[index % symbols.length]}</span>`;
+        }).join('');
+        document.body.appendChild(layer); setTimeout(() => layer.remove(), 1200);
+      }
+      function launchConfetti() {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const layer = document.createElement('div'); layer.className = 'confetti'; layer.setAttribute('aria-hidden', 'true');
+        layer.innerHTML = Array.from({ length: 36 }, () => `<span style="left:${Math.random() * 100}%;animation-delay:${(Math.random() * 0.6).toFixed(2)}s;animation-duration:${(1.6 + Math.random()).toFixed(2)}s">${['🎉', '⭐', '✨', '🎊', '🌟'][Math.floor(Math.random() * 5)]}</span>`).join('');
+        document.body.appendChild(layer); setTimeout(() => layer.remove(), 3200);
+      }
+      async function finishRound() {
+        const good = responses.filter((item) => item.ok).length;
+        const recap = responses.map((item, index) => `<article class="review ${item.ok ? 'review-ok' : 'review-no'}"><b>${item.ok ? '✅' : '❌'} Question ${index + 1} : ${escapeHtml(item.question)}</b>${item.hint ? ' <span class="type-badge">💡 avec indice</span>' : ''}<p>Ta réponse : <strong>${escapeHtml(item.chosen)}</strong>${item.ok ? '' : ` · Bonne réponse : <strong>${escapeHtml(item.correct)}</strong>`}</p><small>${escapeHtml(item.explanation)}</small></article>`).join('');
+        app.stats.lessons += 1; updateStats();
+        const share = responses.length ? good / responses.length : 0;
+        if (share >= 0.8) launchConfetti();
+        $('game').innerHTML = `<div class="done"><div class="star">${share === 1 ? '🏆' : share >= 0.8 ? '🥇' : share >= 0.5 ? '🥈' : '💪'}</div><h2>${share === 1 ? 'Sans faute, champion !' : share >= 0.8 ? 'Excellent travail !' : share >= 0.5 ? 'Mission terminée !' : 'Bien essayé, on recommence ?'}</h2><p>${escapeHtml(roundLabel())}</p><p>Résultat : <strong>${good} bonne${good === 1 ? '' : 's'} réponse${good === 1 ? '' : 's'} sur ${responses.length}</strong> · ${responses.length - good} à revoir</p><div id="resultSaveStatus" class="small">Enregistrement de ta progression…</div><div class="recap">${recap}</div><div class="result-actions">${mixedMode ? '<button class="btn primary" id="again">Nouvelle série</button><button class="btn secondary" id="backHome">Retour à l’accueil</button>' : practicePart ? '<button class="btn primary" id="again">Recommencer cette partie</button><button class="btn secondary" id="backToCourse">Retour au cours</button>' : '<button class="btn primary" id="again">Nouvelle série</button><button class="btn secondary" id="selectLevel">Changer de niveau</button><button class="btn secondary" id="selectSubject">Choisir une matière</button>'}</div></div>`;
+        const donePart = practicePart; const doneModule = activeModuleId; const doneMode = mixedMode; const doneRound = round.slice(); const doneSubject = activeSubject;
+        const doneBox = document.querySelector('#game .done');
+        playTone(share >= 0.5 ? 'end' : 'ko');
+        buddySay(share === 1 ? 'Sans faute ! Je suis fier de toi 🏆' : share >= 0.8 ? 'Excellent travail ! 🥇' : share >= 0.5 ? 'Beau travail, continue comme ça !' : 'On réessaie ensemble ? Tu vas progresser 💪', share >= 0.5 ? 'happy' : '');
+        if (doneMode) {
+          $('again').onclick = () => startMixedRound(doneMode);
+          $('backHome').onclick = () => { showModeHome(); renderDashboard(); };
+        } else if (donePart) {
+          $('again').onclick = () => startPracticeRound(doneModule, donePart);
+          $('backToCourse').onclick = () => backToCourse(doneModule);
+        } else {
+        $('again').onclick = () => renderQuiz();
+        $('selectLevel').onclick = () => { $('modulePanel').scrollIntoView({ behavior: 'smooth', block: 'center' }); $('level').focus(); };
+        $('selectSubject').onclick = () => $('subjects').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        try {
+          const payload = doneMode
+            ? { mode: doneMode, answers: responses.map((item, index) => ({ subjectKey: doneRound[index]._subjectKey, question: item.question, response: item.response, choices: doneRound[index].answers })) }
+            : { subjectKey: activeSubject, moduleId: doneModule, difficulty: level, ...(donePart ? { part: donePart } : {}),
+              answers: responses.map((item, index) => ({ question: item.question, response: item.response, choices: doneRound[index].answers })) };
+          const result = await callServer('saveQuizResult', [sessionToken, payload]);
+          app.stats = result.stats; updateStats();
+          if (result.activity) { app.activity = result.activity; renderDashboard(); }
+          if (result.rewards) { const before = masteryOf(doneSubject, doneModule); app.rewards = result.rewards; applyLook();
+            if (doneBox && doneBox.isConnected && !doneMode && !donePart) { const after = masteryOf(doneSubject, doneModule);
+              doneBox.insertAdjacentHTML('beforeend', `<div class="mastery-line">Maîtrise du module : ${masteryStars(doneSubject, doneModule)}${after > before ? ' · nouveau record !' : ''}</div>`); } }
+          if (result.newBadges && result.newBadges.length && doneBox && doneBox.isConnected) {
+            doneBox.insertAdjacentHTML('beforeend', `<div class="new-badges">${result.newBadges.map((badge) => `<div>🏅 Nouveau badge : ${escapeHtml(badge.icon)} ${escapeHtml(badge.name)}</div>`).join('')}<button type="button" class="btn secondary" id="seeBadges">Voir mes badges</button></div>`);
+            $('seeBadges').onclick = openRewards; playTone('badge'); buddySay(`Nouveau badge : ${result.newBadges[0].name} ! 🏅`, 'happy');
+          }
+          $('resultSaveStatus').textContent = 'Progression enregistrée ✓'; $('resultSaveStatus').className = 'success';
+        } catch (error) {
+          $('resultSaveStatus').textContent = `Progression non enregistrée : ${error.message}`; $('resultSaveStatus').className = 'error';
+        }
+      }
+      function selectedGradeKey() {
+        return ($('newGrade').value === 'autre' ? $('newGradeOther').value : $('newGrade').value).trim().toUpperCase();
+      }
+      // Les matières du pack de la classe sont proposées et cochées ; les autres restent disponibles à part.
+      function renderSubjectChoices() {
+        const picker = $('subjectPicker');
+        if (!adminData) { picker.replaceChildren(); return; }
+        const grade = selectedGradeKey();
+        const pack = (adminData.gradePacks || {})[grade] || null;
+        const keys = Object.keys(adminData.catalog);
+        const choice = (key, checked) => {
+          const subject = adminData.catalog[key];
+          const counts = pack && pack[key] ? ` <span class="small">· ${pack[key].modules} cours · ${pack[key].questions} questions</span>` : '';
+          return `<label class="subject-choice"><input type="checkbox" name="subjects" value="${escapeHtml(key)}" ${checked ? 'checked' : ''}><span>${escapeHtml(subject.icon || '📘')} ${escapeHtml(subject.name)}${counts}</span></label>`;
+        };
+        if (!grade) { picker.innerHTML = '<p class="small other-subjects">Choisis d’abord une classe : les matières de ce niveau seront proposées automatiquement.</p>'; return; }
+        if (!pack) { picker.innerHTML = keys.map((key) => choice(key, false)).join(''); return; }
+        const recommended = keys.filter((key) => pack[key]);
+        const others = keys.filter((key) => !pack[key]);
+        picker.innerHTML = recommended.map((key) => choice(key, true)).join('')
+          + (others.length ? `<details class="other-subjects"><summary>Autres matières (${others.length})</summary><div class="subject-picker">${others.map((key) => choice(key, false)).join('')}</div></details>` : '');
+      }
+      function updateCourseTemplateNotice() {
+        const notice = $('courseTemplateNotice');
+        if (!notice || !adminData) return;
+        const grade = selectedGradeKey();
+        const pack = (adminData.gradePacks || {})[grade];
+        const selected = [...document.querySelectorAll('#subjectPicker input[name="subjects"]:checked')].map((input) => input.value);
+        const totals = selected.reduce((sum, key) => ({
+          modules: sum.modules + Number(pack && pack[key] ? pack[key].modules : 0),
+          questions: sum.questions + Number(pack && pack[key] ? pack[key].questions : 0),
+        }), { modules: 0, questions: 0 });
+        const available = Object.keys(adminData.gradePacks || {}).join(', ');
+        if (!grade) notice.textContent = 'Choisis une classe pour voir les matières et le pack de cours de ce niveau.';
+        else if (!pack) notice.textContent = `Aucun pack de cours n’est disponible pour ${grade}. Tu pourras créer les cours dans « Modules et petits cours ». Packs disponibles : ${available}.`;
+        else if (totals.modules || totals.questions) notice.textContent = `Pack ${grade} : ${totals.modules} cours et ${totals.questions} questions de quiz seront ajoutés aux ${selected.length} matière${selected.length === 1 ? '' : 's'} sélectionnée${selected.length === 1 ? '' : 's'}. Tu pourras les compléter dans « Modules et petits cours ».`;
+        else notice.textContent = `Pack ${grade} : coche au moins une matière du niveau pour recevoir ses cours et ses quiz.`;
+      }
+      function formatDate(value) {
+        if (!value) return 'Aucune série terminée';
+        const date = new Date(value); return Number.isNaN(date.getTime()) ? '' : date.toLocaleString('fr-FR');
+      }
+      function renderAdminDashboard(data) {
+        adminData = data; $('authGate').hidden = true; $('studentApp').hidden = true; $('adminApp').hidden = false;
+        renderSubjectChoices();
+        updateCourseTemplateNotice();
+        renderAdminList(data.admins || []);
+        populatePreviewGrades();
+        $('adminProfileSelect').replaceChildren(...data.profiles.map((profile) => new Option(`${profile.name} · ${profile.grade}`, profile.id)));
+        if (!data.profiles.some((profile) => profile.id === selectedAdminProfileId)) selectedAdminProfileId = data.profiles[0] ? data.profiles[0].id : '';
+        $('adminProfileSelect').value = selectedAdminProfileId;
+        $('adminProfileCount').textContent = `${data.profiles.length} profil${data.profiles.length === 1 ? '' : 's'}`;
+        renderSelectedProfile();
+      }
+      function renderSelectedProfile() {
+        const data = adminData;
+        const container = $('adminProfiles');
+        const profile = data.profiles.find((item) => item.id === selectedAdminProfileId);
+        $('profileTools').hidden = !profile; $('adminProfileSelect').disabled = !profile;
+        $('importStatus').textContent = ''; $('moduleStatus').textContent = ''; $('existingModule').value = '';
+        populateModuleSubjects();
+        if (!profile) { container.innerHTML = '<div class="card">Aucun profil. Crée un profil élève avec le formulaire.</div>'; return; }
+        container.innerHTML = [profile].map((profile) => {
+          const subjectNames = profile.subjectKeys.map((key) => data.catalog[key] ? data.catalog[key].name : key);
+          const progress = profile.subjectKeys.map((key) => {
+            const item = profile.subjectProgress[key] || { attempts: 0, correct: 0, total: 0, accuracy: 0, lastAt: '', modules: [] };
+            const name = data.catalog[key] ? data.catalog[key].name : key;
+            const moduleRows = (item.modules || []).map((module) => `<div class="small">↳ ${escapeHtml(module.title)} : ${module.correct}/${module.total} · ${module.attempts} série${module.attempts === 1 ? '' : 's'}</div>`).join('');
+            return `<div class="progress-item"><strong>${escapeHtml(name)}</strong>${item.attempts} série${item.attempts === 1 ? '' : 's'} · ${item.correct}/${item.total} bonnes réponses (${item.accuracy} %) <div class="small">Dernière : ${escapeHtml(formatDate(item.lastAt))}</div>${moduleRows}</div>`;
+          }).join('') || '<div class="empty-progress">Aucune matière affectée.</div>';
+          const recent = profile.recent.length ? `<ul class="recent-list">${profile.recent.map((entry) => {
+            const subjectName = entry.subjectKey === '_mix' ? (entry.moduleId === 'defi' ? '🎯 Défi du jour' : '🔁 Mes erreurs') : data.catalog[entry.subjectKey] ? data.catalog[entry.subjectKey].name : entry.subjectKey;
+            const module = (profile.subjectProgress[entry.subjectKey] && profile.subjectProgress[entry.subjectKey].modules || []).find((item) => item.id === (entry.moduleId || 'general'));
+            return `<li>${escapeHtml(formatDate(entry.at))} · ${escapeHtml(subjectName)}${module ? ` · ${escapeHtml(module.title)}` : ''} · ${entry.correct}/${entry.total} · ${escapeHtml(entry.difficulty)}</li>`;
+          }).join('')}</ul>` : '<p class="empty-progress">Aucune série terminée pour le moment.</p>';
+          const editSubjectChoices = Object.entries(data.catalog).map(([key, subject]) => `<label class="edit-subject-choice"><input type="checkbox" name="subjectKeys" value="${escapeHtml(key)}" ${profile.subjectKeys.includes(key) ? 'checked' : ''}><span>${escapeHtml(subject.icon || '📘')} ${escapeHtml(subject.name)}</span></label>`).join('');
+          return `<article class="profile-card"><div class="profile-head"><div><h2>${escapeHtml(profile.name)}</h2><div class="small">${escapeHtml(profile.grade)}${profile.builtIn ? ' · Profil initial' : ''}</div></div><span class="badge">${profile.accessConfigured ? 'Code actif' : 'Code à configurer'}</span></div><div class="small">Matières : ${escapeHtml(subjectNames.join(', ') || 'aucune')}</div><div class="metrics"><span class="metric">📚 ${profile.stats.lessons} leçons terminées</span><span class="metric">⭐ ${profile.stats.stars} étoiles</span></div><h3 class="section-title">Progression par matière et module</h3><div class="progress-grid">${progress}</div><h3 class="section-title">Dernières séries</h3>${recent}<details class="profile-edit"><summary>✏️ Modifier le profil, les matières ou le code</summary><form class="edit-profile-form" data-profile-id="${escapeHtml(profile.id)}"><div class="field"><label>Nom</label><input name="name" value="${escapeHtml(profile.name)}" maxlength="40" required></div><div class="field"><label>Classe / niveau</label><input name="grade" value="${escapeHtml(profile.grade)}" maxlength="30" required></div><div class="field"><label>Matières attribuées</label><div class="edit-subjects">${editSubjectChoices}</div></div><div class="field"><label>Nouveau code d’accès <span class="small">(laisser vide pour le garder)</span></label><input name="accessCode" type="password" minlength="8" autocomplete="new-password" placeholder="8 caractères minimum"></div><button class="btn secondary" type="submit">Enregistrer les modifications</button><div class="manage-status" role="status"></div></form></details><details class="danger-zone"><summary>🗑️ Supprimer ce profil</summary><form class="delete-profile-form" data-profile-id="${escapeHtml(profile.id)}" data-profile-name="${escapeHtml(profile.name)}"><p class="small">La suppression efface définitivement le profil, son code d’accès, ses questions, ses modules et toute sa progression. Les sessions ouvertes sur ce profil sont fermées.</p><div class="field"><label>Pour confirmer, saisis le nom du profil : <strong>${escapeHtml(profile.name)}</strong></label><input name="confirmName" autocomplete="off" required></div><button class="btn danger" type="submit">Supprimer définitivement</button><div class="manage-status" role="status"></div></form></details></article>`;
+        }).join('');
+        document.querySelectorAll('.edit-profile-form').forEach((form) => form.addEventListener('submit', saveProfileChanges));
+        document.querySelectorAll('.delete-profile-form').forEach((form) => form.addEventListener('submit', deleteSelectedProfile));
+        refreshModuleManager().catch((error) => { $('moduleStatus').textContent = error.message; });
+      }
+      const ADMIN_VIEWS = {
+        suivi: ['Suivi des élèves', 'Résultats, progression et réglages du profil sélectionné.', true],
+        cours: ['Cours et quiz', 'Consulte les cours et les questions fournis pour chaque niveau.', false],
+        creation: ['Création de profil', 'Crée un profil élève avec sa classe, ses matières et son code d’accès.', false],
+        import: ['Import et modules', 'Importe des questions et gère les modules du profil sélectionné.', true],
+        admins: ['Administrateurs', 'Mot de passe et comptes administrateurs.', false],
+      };
+      function showAdminView(view) {
+        if (!ADMIN_VIEWS[view]) view = 'suivi';
+        document.querySelectorAll('.admin-view').forEach((section) => { section.hidden = section.dataset.view !== view; });
+        document.querySelectorAll('.admin-tab').forEach((tab) => {
+          tab.classList.toggle('active', tab.dataset.view === view);
+          tab.setAttribute('aria-current', tab.dataset.view === view ? 'page' : 'false');
+        });
+        const [title, intro, needsProfile] = ADMIN_VIEWS[view];
+        $('adminViewTitle').textContent = title; $('adminViewIntro').textContent = intro;
+        $('adminProfileBar').hidden = !needsProfile;
+        try { sessionStorage.setItem('revisionJeuxAdminView', view); } catch (error) { /* vue non mémorisée */ }
+      }
+      document.querySelectorAll('.admin-tab').forEach((tab) => tab.addEventListener('click', () => showAdminView(tab.dataset.view)));
+      let initialAdminView = 'suivi';
+      try { initialAdminView = sessionStorage.getItem('revisionJeuxAdminView') || 'suivi'; } catch (error) { /* vue par défaut */ }
+      showAdminView(initialAdminView);
+      function renderAdminList(admins) {
+        $('adminList').innerHTML = admins.map((admin) => `<div class="module-list-item"><strong>${escapeHtml(admin.username)}${admin.isMe ? ' (toi)' : ''}</strong><span>${admin.createdAt ? `Créé le ${escapeHtml(formatDate(admin.createdAt))}` : 'Compte d’origine'}${admin.isMe || admins.length <= 1 ? '' : ` · <button type="button" class="btn danger delete-admin" data-username="${escapeHtml(admin.username)}" style="padding:4px 10px">Supprimer</button>`}</span></div>`).join('');
+        document.querySelectorAll('.delete-admin').forEach((button) => button.addEventListener('click', async () => {
+          if (!confirm(`Supprimer l’administrateur ${button.dataset.username} ? Il sera déconnecté immédiatement.`)) return;
+          const status = $('adminAccountsStatus'); status.textContent = 'Suppression…'; status.className = 'manage-status small';
+          try {
+            renderAdminList(await callServer('deleteAdmin', [sessionToken, button.dataset.username]));
+            status.textContent = 'Administrateur supprimé ✓'; status.className = 'manage-status success';
+          } catch (error) { status.textContent = error.message; status.className = 'manage-status error'; }
+        }));
+      }
+      $('createAdminForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); const status = $('adminAccountsStatus'); status.textContent = 'Création…'; status.className = 'manage-status small';
+        try {
+          renderAdminList(await callServer('createAdmin', [sessionToken, $('createAdminConfirm').value, $('newAdminUsername').value, $('newAdminPasswordCreate').value]));
+          $('createAdminForm').reset(); status.textContent = 'Administrateur créé ✓ Il peut se connecter avec son identifiant.'; status.className = 'manage-status success';
+        } catch (error) { status.textContent = error.message; status.className = 'manage-status error'; }
+      });
+      // Consultation en lecture seule : cours complet et questions du module, bonne réponse en vert.
+      let previewRequest = 0;
+      const GRADE_ORDER = ['CP', 'CE1', 'CE2', 'CM1', 'CM2', '6E', '5E', '4E', '3E', '2NDE', '1RE', 'TERMINALE'];
+      const GRADE_LABELS = { '6E': '6e', '5E': '5e', '4E': '4e', '3E': '3e', '2NDE': '2nde', '1RE': '1re', TERMINALE: 'Terminale' };
+      function populatePreviewGrades() {
+        const packs = adminData.gradePacks || {};
+        const previous = $('previewGrade').value;
+        const grades = Object.keys(packs).sort((left, right) => GRADE_ORDER.indexOf(left) - GRADE_ORDER.indexOf(right));
+        $('previewGrade').replaceChildren(...grades.map((grade) => new Option(GRADE_LABELS[grade] || grade, grade)));
+        $('previewCard').hidden = !grades.length;
+        if (grades.includes(previous)) $('previewGrade').value = previous;
+        populatePreviewSubjects();
+      }
+      function populatePreviewSubjects() {
+        const pack = (adminData.gradePacks || {})[$('previewGrade').value] || {};
+        const previous = $('previewSubject').value;
+        const keys = Object.keys(adminData.catalog).filter((key) => pack[key]);
+        $('previewSubject').replaceChildren(...keys.map((key) => new Option(adminData.catalog[key].name, key)));
+        if (keys.includes(previous)) $('previewSubject').value = previous;
+        $('previewModule').replaceChildren(); $('modulePreview').innerHTML = '';
+        if (keys.length) loadPreviewModules();
+      }
+      async function loadPreviewModules(selectModuleId) {
+        const request = ++previewRequest;
+        $('previewStatus').textContent = 'Chargement des modules…'; $('previewStatus').className = 'manage-status small';
+        try {
+          const data = await callServer('getGradeModules', [sessionToken, $('previewGrade').value, $('previewSubject').value]);
+          if (request !== previewRequest) return;
+          $('previewModule').replaceChildren(...data.modules.map((module) => new Option(`${module.title} · ${module.questionCountInBank} question${module.questionCountInBank === 1 ? '' : 's'}`, module.id)));
+          if (typeof selectModuleId === 'string' && data.modules.some((module) => module.id === selectModuleId)) $('previewModule').value = selectModuleId;
+          await loadPreview();
+        } catch (error) { $('previewStatus').textContent = error.message; $('previewStatus').className = 'manage-status error'; }
+      }
+      async function loadPreview() {
+        const request = ++previewRequest;
+        if (!$('previewModule').value) { $('modulePreview').innerHTML = ''; $('previewStatus').textContent = ''; return; }
+        $('previewStatus').textContent = 'Chargement du cours…'; $('previewStatus').className = 'manage-status small';
+        try {
+          const data = await callServer('getModulePreview', [sessionToken, $('previewGrade').value, $('previewSubject').value, $('previewModule').value]);
+          if (request !== previewRequest) return;
+          $('previewStatus').textContent = '';
+          const levels = { facile: 'Facile', moyen: 'Moyen', difficile: 'Difficile' };
+          const groups = Object.entries(levels).map(([level, label]) => {
+            const questions = data.questions.filter((question) => question.difficulty === level);
+            const items = questions.map((question, index) => {
+              const choices = isChoiceType(question)
+                ? `<ol type="A">${question.answers.map((answer, answerIndex) => `<li class="${answerIndex === question.correctIndex ? 'good' : ''}">${escapeHtml(answer)}${answerIndex === question.correctIndex ? ' ✓' : ''}</li>`).join('')}</ol>`
+                : `<div class="good-answer">✓ ${escapeHtml(correctAnswerText(question))}${questionType(question) === 'saisie' && question.answers.length > 1 ? ` <span class="small">(aussi accepté : ${escapeHtml(question.answers.slice(1).join(', '))})</span>` : ''}${questionType(question) === 'echelle' && question.scale ? ` <span class="small">(curseur de ${formatScaleValue(question.scale.min)} à ${formatScaleValue(question.scale.max)}, pas de ${formatScaleValue(question.scale.step)})</span>` : ''}</div>`;
+              return `<div class="preview-question"><span class="type-badge">${TYPE_LABELS[questionType(question)] || 'QCM'}</span> <strong>${index + 1}. ${escapeHtml(question.question)}</strong>${question.schema ? renderSchema(question.schema) : ''}${choices}${question.explanation ? `<span class="small">💡 ${escapeHtml(question.explanation)}</span>` : ''}</div>`;
+            }).join('');
+            return `<details class="preview-level"><summary>${label} · ${questions.length} question${questions.length === 1 ? '' : 's'}</summary>${items || '<p class="small">Aucune question à ce niveau.</p>'}</details>`;
+          }).join('');
+          const course = data.module.course || data.module.summary || 'Aucun cours rédigé pour ce module.';
+          $('modulePreview').innerHTML = `<h3>${escapeHtml(data.module.title)}</h3><div class="small">Quiz proposé : ${data.module.quiz.questionCount} questions · difficulté ${escapeHtml(data.module.quiz.difficulty)}</div><div class="preview-course lesson-rich">${renderRichCourse(course)}</div>${groups}`;
+          if (searchTerms.length) highlightSearch($('modulePreview'));
+        } catch (error) { $('previewStatus').textContent = error.message; $('previewStatus').className = 'manage-status error'; }
+      }
+      // ----- Recherche dans les cours (admin) -----
+      let searchTerms = [];
+      const foldText = (value) => String(value || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+      // Surligne les mots recherchés dans l'aperçu ; les niveaux de questions qui en contiennent sont dépliés.
+      function highlightSearch(root) {
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); const nodes = [];
+        while (walker.nextNode()) if (walker.currentNode.parentElement && !walker.currentNode.parentElement.closest('svg')) nodes.push(walker.currentNode);
+        nodes.forEach((node) => {
+          const text = node.nodeValue; const folded = foldText(text); const ranges = [];
+          searchTerms.forEach((term) => { let at = folded.indexOf(term); while (at >= 0) { ranges.push([at, at + term.length]); at = folded.indexOf(term, at + term.length); } });
+          if (!ranges.length || folded.length !== text.length) return;
+          ranges.sort((a, b) => a[0] - b[0]);
+          const fragment = document.createDocumentFragment(); let last = 0;
+          ranges.forEach(([start, end]) => { if (start < last) return; fragment.append(text.slice(last, start)); const mark = document.createElement('mark'); mark.className = 'search-hit'; mark.textContent = text.slice(start, end); fragment.append(mark); last = end; });
+          fragment.append(text.slice(last)); node.replaceWith(fragment);
+        });
+        root.querySelectorAll('details.preview-level').forEach((details) => { if (details.querySelector('mark.search-hit')) details.open = true; });
+        const first = root.querySelector('mark.search-hit'); if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      async function runCourseSearch(event) {
+        event.preventDefault();
+        const query = $('courseSearchInput').value.trim(); if (query.length < 2) return;
+        searchTerms = foldText(query).split(/\s+/).filter((word) => word.length >= 2);
+        const status = $('courseSearchStatus'); status.textContent = 'Recherche en cours…'; status.className = 'manage-status small';
+        $('courseSearchResults').innerHTML = '';
+        try {
+          const data = await callServer('searchCourses', [sessionToken, query, $('courseSearchAll').checked ? '' : $('previewGrade').value]);
+          status.textContent = data.results.length ? `${data.results.length} résultat${data.results.length > 1 ? 's' : ''}${data.truncated ? ' (les premiers seulement : précise ta recherche)' : ''}` : 'Aucun résultat.';
+          status.className = 'manage-status small';
+          $('courseSearchResults').innerHTML = data.results.map((item, index) => `<button type="button" class="search-result" data-index="${index}"><span class="badge">${escapeHtml(GRADE_LABELS[item.grade] || item.grade)}</span> <strong>${escapeHtml(item.subjectName)} · ${escapeHtml(item.moduleTitle)}</strong> <span class="small">${escapeHtml(item.where)}</span><span class="search-snippet">${escapeHtml(item.snippet)}</span></button>`).join('');
+          $('courseSearchResults').querySelectorAll('.search-result').forEach((button) => button.addEventListener('click', () => openSearchResult(data.results[Number(button.dataset.index)])));
+        } catch (error) { status.textContent = error.message; status.className = 'manage-status error'; }
+      }
+      async function openSearchResult(item) {
+        $('previewGrade').value = item.grade; populatePreviewSubjects();
+        $('previewSubject').value = item.subjectKey;
+        await loadPreviewModules(item.moduleId);
+        $('modulePreview').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      $('courseSearchForm').addEventListener('submit', runCourseSearch);
+      $('previewGrade').addEventListener('change', populatePreviewSubjects);
+      $('previewSubject').addEventListener('change', () => loadPreviewModules());
+      $('previewModule').addEventListener('change', loadPreview);
+      async function deleteSelectedProfile(event) {
+        event.preventDefault(); const form = event.currentTarget; const status = form.querySelector('.manage-status');
+        const confirmName = form.querySelector('[name="confirmName"]').value.trim();
+        if (confirmName !== form.dataset.profileName) { status.textContent = 'Le nom saisi ne correspond pas au profil.'; status.className = 'manage-status error'; return; }
+        if (!confirm(`Supprimer définitivement le profil ${form.dataset.profileName} et toute sa progression ?`)) return;
+        const button = form.querySelector('button'); button.disabled = true;
+        status.textContent = 'Suppression…'; status.className = 'manage-status small';
+        try {
+          await callServer('deleteProfile', [sessionToken, form.dataset.profileId, confirmName]);
+          selectedAdminProfileId = '';
+          await refreshAdminDashboard();
+        } catch (error) { status.textContent = error.message; status.className = 'manage-status error'; button.disabled = false; }
+      }
+      async function refreshAdminDashboard() {
+        $('adminProfiles').innerHTML = '<div class="loading">Actualisation du tableau de bord…</div>';
+        try { renderAdminDashboard(await callServer('getAdminDashboard', [sessionToken])); }
+        catch (error) { $('adminProfiles').innerHTML = `<div class="card error">${escapeHtml(error.message)}</div>`; }
+      }
+      async function saveProfileChanges(event) {
+        event.preventDefault(); const form = event.currentTarget; const status = form.querySelector('.manage-status');
+        const subjectKeys = [...form.querySelectorAll('input[name="subjectKeys"]:checked')].map((input) => input.value);
+        status.textContent = 'Enregistrement…'; status.className = 'manage-status small';
+        try {
+          await callServer('updateProfile', [sessionToken, form.dataset.profileId, {
+            name: form.querySelector('[name="name"]').value,
+            grade: form.querySelector('[name="grade"]').value,
+            subjectKeys,
+            accessCode: form.querySelector('[name="accessCode"]').value,
+          }]);
+          status.textContent = 'Profil mis à jour ✓'; status.className = 'manage-status success';
+          await refreshAdminDashboard();
+        } catch (error) { status.textContent = error.message; status.className = 'manage-status error'; }
+      }
+      function populateModuleSubjects() {
+        const profile = adminData && adminData.profiles.find((item) => item.id === selectedAdminProfileId);
+        const previous = $('moduleSubject').value;
+        const subjects = profile ? profile.subjectKeys : [];
+        $('moduleSubject').replaceChildren(...subjects.map((key) => {
+          const option = document.createElement('option'); option.value = key;
+          option.textContent = `${adminData.catalog[key] ? adminData.catalog[key].name : key}`; return option;
+        }));
+        if (subjects.includes(previous)) $('moduleSubject').value = previous;
+      }
+      async function refreshModuleManager() {
+        if (!adminData || !adminData.profiles.length) return;
+        populateModuleSubjects();
+        const profileIdForModules = selectedAdminProfileId;
+        const subjectKey = $('moduleSubject').value;
+        if (!profileIdForModules || !subjectKey) {
+          $('existingModule').replaceChildren(new Option('Aucune matière attribuée', ''));
+          $('moduleList').innerHTML = ''; return;
+        }
+        $('moduleStatus').textContent = 'Chargement des modules…'; $('moduleStatus').className = 'manage-status small';
+        const data = await callServer('getModuleManagerData', [sessionToken, profileIdForModules, subjectKey]);
+        renderModuleManager(data);
+        $('moduleStatus').textContent = '';
+      }
+      function renderModuleManager(data) {
+        const selectedId = $('existingModule').value;
+        $('existingModule').replaceChildren(new Option('＋ Nouveau module', ''));
+        data.modules.forEach((module) => {
+          const option = new Option(`${module.title} · ${module.questionCountInBank} questions`, module.id);
+          $('existingModule').appendChild(option);
+        });
+        const module = data.modules.find((item) => item.id === selectedId) || null;
+        $('existingModule').value = module ? module.id : '';
+        $('moduleFormTitle').value = module ? module.title : '';
+        $('moduleSummary').value = module ? module.summary || '' : '';
+        $('moduleCourse').value = module ? module.course : '';
+        $('moduleQuestionCount').value = module ? module.quiz.questionCount : 10;
+        $('moduleDifficulty').value = module ? module.quiz.difficulty : 'moyen';
+        $('moduleList').innerHTML = data.modules.map((item) => `<div class="module-list-item"><strong>${escapeHtml(item.title)} · ${item.questionCountInBank} question${item.questionCountInBank === 1 ? '' : 's'}</strong><span>ID à utiliser dans la banque JSON/CSV : <code>${escapeHtml(item.id)}</code> · quiz de ${item.quiz.questionCount} en difficulté ${escapeHtml(item.quiz.difficulty)} · ${item.course ? 'cours complet disponible' : 'cours à compléter'}</span></div>`).join('');
+      }
+      $('adminProfileSelect').addEventListener('change', () => { selectedAdminProfileId = $('adminProfileSelect').value; renderSelectedProfile(); });
+      $('moduleSubject').addEventListener('change', () => refreshModuleManager().catch((error) => { $('moduleStatus').textContent = error.message; }));
+      $('existingModule').addEventListener('change', () => refreshModuleManager().catch((error) => { $('moduleStatus').textContent = error.message; }));
+      $('moduleForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); const button = $('saveModuleButton'); button.disabled = true;
+        $('moduleStatus').textContent = 'Enregistrement du module…'; $('moduleStatus').className = 'manage-status small';
+        try {
+          const data = await callServer('saveCourseModule', [sessionToken, selectedAdminProfileId, $('moduleSubject').value,
+            $('existingModule').value, $('moduleFormTitle').value, $('moduleSummary').value, $('moduleCourse').value,
+            $('moduleQuestionCount').value, $('moduleDifficulty').value]);
+          renderModuleManager(data); $('moduleStatus').textContent = 'Module enregistré ✓'; $('moduleStatus').className = 'manage-status success';
+        } catch (error) { $('moduleStatus').textContent = error.message; $('moduleStatus').className = 'manage-status error'; }
+        finally { button.disabled = false; }
+      });
+      // ----- Transverse : écran d'attente et chargement de la banque (compressée, gardée sur l'appareil) -----
+      const LOADER_TIPS = ['Astuce : relis la partie « À retenir » avant de faire un quiz.', 'Astuce : les questions ratées reviennent dans « Mes erreurs ».',
+        'Astuce : 3 étoiles en difficile pour maîtriser un module !', 'Astuce : imprime la fiche d’un cours pour réviser sur papier.', 'Astuce : le défi du jour change chaque jour.'];
+      let loaderTimer = 0;
+      function showLoader(text) {
+        const loader = $('loader'); loader.hidden = false; loader.classList.remove('fade');
+        $('loaderText').textContent = text || 'Chargement…';
+        if (!loaderTimer) {
+          let index = Math.floor(Math.random() * LOADER_TIPS.length); $('loaderTip').textContent = LOADER_TIPS[index];
+          loaderTimer = setInterval(() => { index = (index + 1) % LOADER_TIPS.length; $('loaderTip').textContent = LOADER_TIPS[index]; }, 2800);
+        }
+      }
+      function hideLoader() {
+        const loader = $('loader'); clearInterval(loaderTimer); loaderTimer = 0;
+        loader.classList.add('fade'); setTimeout(() => { if (loader.classList.contains('fade')) loader.hidden = true; }, 320);
+      }
+      const BANK_CACHE_KEY = 'rj-bank-cache';
+      async function gunzipJson(base64) {
+        const bytes = Uint8Array.from(atob(base64), (char) => char.charCodeAt(0));
+        const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+        return JSON.parse(await new Response(stream).text());
+      }
+      async function loadStudentBootstrap() {
+        const started = performance.now();
+        let cached = null;
+        try { cached = JSON.parse(localStorage.getItem(BANK_CACHE_KEY) || 'null'); } catch (error) { cached = null; }
+        const canGzip = typeof DecompressionStream === 'function';
+        let data = await callServer('getStudentBootstrap', [sessionToken, { bankHash: (cached && cached.hash) || '', gzip: canGzip }]);
+        const received = performance.now();
+        let source = 'réseau';
+        if (data.bank === null && cached && cached.hash === data.bankHash && cached.bank) { data.bank = cached.bank; source = 'appareil'; }
+        else if (data.bankGz) { try { data.bank = await gunzipJson(data.bankGz); source = 'réseau compressé'; } catch (error) { data.bank = null; } delete data.bankGz; }
+        if (!data.bank) { data = await callServer('getStudentBootstrap', [sessionToken, {}]); source = 'réseau'; }
+        if (source !== 'appareil') {
+          try { localStorage.setItem(BANK_CACHE_KEY, JSON.stringify({ hash: data.bankHash, bank: data.bank })); }
+          catch (error) { try { localStorage.removeItem(BANK_CACHE_KEY); } catch (ignored) { /* stockage indisponible */ } }
+        }
+        window.__perf = { totalMs: Math.round(performance.now() - started), serverAndNetworkMs: Math.round(received - started), serverMs: data.timing && data.timing.serverMs, bankKo: data.timing && data.timing.bankKo, source };
+        console.info('[Révisions en jeu] chargement', window.__perf);
+        setTimeout(() => { const footer = $('footerMessage'); if (!footer) return; let info = $('perfInfo'); if (!info) { info = document.createElement('small'); info.id = 'perfInfo'; info.style.cssText = 'display:block;opacity:.6;margin-top:4px'; footer.after(info); }
+          info.textContent = `⏱ Chargé en ${(window.__perf.totalMs / 1000).toFixed(1).replace('.', ',')} s · ${window.__perf.source === 'appareil' ? 'cours gardés sur cet appareil' : 'cours téléchargés'}`; }, 0);
+        return data;
+      }
+      async function init() {
+        showLoader('On ouvre ton cartable…');
+        let saved;
+        try { saved = JSON.parse(sessionStorage.getItem('revisionJeuxSession') || 'null'); } catch (error) { saved = null; }
+        // Session déjà ouverte : on charge le profil en même temps que la liste des profils.
+        let pending = null;
+        if (saved && saved.token && saved.role) {
+          sessionToken = saved.token; showLoader(saved.role === 'admin' ? 'Chargement du tableau de bord…' : 'Je prépare tes cours…');
+          pending = (saved.role === 'admin' ? callServer('getAdminDashboard', [sessionToken]) : loadStudentBootstrap()).then((value) => ({ value }), (error) => ({ error }));
+        }
+        try {
+          const bootstrap = await callServer('getPublicBootstrap');
+          $('loginProfile').replaceChildren(...bootstrap.profiles.map((profile) => {
+            const option = document.createElement('option'); option.value = profile.id; option.textContent = `${profile.name} · ${profile.grade}`; return option;
+          }));
+          $('setupCard').hidden = bootstrap.adminConfigured;
+          if (pending) {
+            const result = await pending;
+            if (result.error) throw result.error;
+            if (saved.role === 'admin') renderAdminDashboard(result.value); else syncProfile(result.value);
+          } else $('authGate').hidden = false;
+        } catch (error) {
+          $('authGate').hidden = false;
+          $('studentLoginStatus').textContent = `Impossible de charger les profils : ${error.message}`;
+        } finally { hideLoader(); }
+      }
+
+      $('studentLoginForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); const status = $('studentLoginStatus'); status.textContent = 'Connexion…';
+        try {
+          const session = await callServer('studentLogin', [$('loginProfile').value, $('loginCode').value]);
+          storeSession(session.token, 'student'); showLoader('Je prépare tes cours…');
+          syncProfile(await loadStudentBootstrap());
+          $('loginCode').value = ''; status.textContent = '';
+        } catch (error) { status.textContent = error.message; } finally { hideLoader(); }
+      });
+      $('adminLoginForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); const status = $('adminLoginStatus'); status.textContent = 'Connexion…';
+        try {
+          const session = await callServer('adminLogin', [$('adminUsername').value, $('adminPassword').value]);
+          storeSession(session.token, 'admin'); $('adminPassword').value = '';
+          renderAdminDashboard(await callServer('getAdminDashboard', [sessionToken]));
+        } catch (error) { status.textContent = error.message; }
+      });
+      $('setupAdminForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); const status = $('setupStatus'); status.textContent = 'Création du compte…';
+        try {
+          const session = await callServer('setupAdmin', [$('setupCode').value, $('setupUsername').value, $('setupPassword').value]);
+          storeSession(session.token, 'admin'); $('setupPassword').value = ''; $('setupCode').value = '';
+          renderAdminDashboard(await callServer('getAdminDashboard', [sessionToken]));
+        } catch (error) { status.textContent = error.message; }
+      });
+      $('createProfileForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); const button = $('createProfileButton'); const status = $('createProfileStatus');
+        const selected = [...document.querySelectorAll('#subjectPicker input[name="subjects"]:checked')].map((input) => input.value);
+        if (!selected.length) { status.textContent = 'Choisis au moins une matière.'; status.className = 'manage-status error'; return; }
+        button.disabled = true; button.textContent = 'Création…'; status.textContent = '';
+        try {
+          const grade = $('newGrade').value === 'autre' ? $('newGradeOther').value.trim() : $('newGrade').value;
+          if (!grade) throw new Error('Précise la classe de ce profil.');
+          const created = await callServer('createProfile', [sessionToken, $('newName').value, grade, selected, $('newAccessCode').value]);
+          selectedAdminProfileId = created.id;
+          $('createProfileForm').reset(); $('otherGradeField').hidden = true; $('newGradeOther').required = false;
+          status.textContent = 'Profil créé avec son code d’accès ✓'; status.className = 'manage-status success';
+          await refreshAdminDashboard();
+          showAdminView('suivi');
+        } catch (error) { status.textContent = error.message; status.className = 'manage-status error'; }
+        finally { button.disabled = false; button.textContent = 'Créer le profil'; }
+      });
+      $('adminImportFile').addEventListener('change', async (event) => {
+        const file = event.target.files[0]; if (!file) return;
+        const importTarget = adminData && adminData.profiles.find((item) => item.id === selectedAdminProfileId);
+        if (!importTarget) { event.target.value = ''; return; }
+        if (!confirm(`Les questions des matières contenues dans le fichier remplaceront celles du profil ${importTarget.name}. Continuer ?`)) { event.target.value = ''; return; }
+        $('importStatus').textContent = 'Import en cours…'; $('importStatus').className = 'manage-status small';
+        try {
+          const result = await callServer('importQuestionFile', [sessionToken, importTarget.id, file.name, await file.text()]);
+          $('importStatus').textContent = `Import terminé pour ${importTarget.name} : ${result.summary}.`; $('importStatus').className = 'manage-status success';
+          refreshModuleManager().catch((error) => { $('moduleStatus').textContent = error.message; });
+        } catch (error) { $('importStatus').textContent = error.message; $('importStatus').className = 'manage-status error'; }
+        event.target.value = '';
+      });
+      $('changeAdminPasswordForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); const status = $('passwordStatus'); status.textContent = 'Mise à jour…'; status.className = 'manage-status small';
+        try {
+          await callServer('changeAdminPassword', [sessionToken, $('currentAdminPassword').value, $('newAdminPassword').value]);
+          $('changeAdminPasswordForm').reset(); status.textContent = 'Mot de passe modifié ✓'; status.className = 'manage-status success';
+        } catch (error) { status.textContent = error.message; status.className = 'manage-status error'; }
+      });
+      $('refreshDashboard').addEventListener('click', refreshAdminDashboard);
+      $('newGrade').addEventListener('change', () => {
+        const other = $('newGrade').value === 'autre'; $('otherGradeField').hidden = !other; $('newGradeOther').required = other;
+        renderSubjectChoices(); updateCourseTemplateNotice();
+      });
+      $('newGradeOther').addEventListener('input', () => { renderSubjectChoices(); updateCourseTemplateNotice(); });
+      $('subjectPicker').addEventListener('change', updateCourseTemplateNotice);
+      $('studentLogout').addEventListener('click', clearSession);
+      syncSoundButton();
+      $('soundToggle').addEventListener('click', () => { soundOn = !soundOn; try { localStorage.setItem('rj-sound', soundOn ? '1' : '0'); } catch (error) { /* stockage indisponible */ } syncSoundButton(); playTone('ok'); });
+      $('openRewards').addEventListener('click', openRewards);
+      $('rewardsBack').addEventListener('click', showModeHome);
+      $('lessonSheet').addEventListener('click', () => openSheet(courseModuleId, 'fiche'));
+      $('lessonCards').addEventListener('click', () => openSheet(courseModuleId, 'cards'));
+      $('sheetModeFiche').addEventListener('click', () => openSheet(sheetModuleId, 'fiche'));
+      $('sheetModeCards').addEventListener('click', () => openSheet(sheetModuleId, 'cards'));
+      $('sheetPrintBtn').addEventListener('click', () => window.print());
+      $('sheetBack').addEventListener('click', () => { $('sheetView').hidden = true; $('courseView').hidden = false; showCourseLesson(sheetModuleId); });
+      $('adminLogout').addEventListener('click', clearSession);
+      $('openCourseMode').addEventListener('click', openCourseMode);
+      $('openQuizMode').addEventListener('click', openQuizMode);
+      $('courseBack').addEventListener('click', showModeHome);
+      $('quizBack').addEventListener('click', showModeHome);
+      $('courseModulesBack').addEventListener('click', () => { $('courseLessonPanel').hidden = true; $('courseModulesPanel').hidden = false; });
+      $('lessonStartQuiz').addEventListener('click', openCourseQuiz);
+      $('lessonBackToMode').addEventListener('click', showModeHome);
+      $('level').addEventListener('change', (event) => { level = event.target.value; renderQuiz(); });
+      $('moduleSelect').addEventListener('change', () => {
+        activeModuleId = $('moduleSelect').value;
+        const module = currentSubject().modules.find((item) => item.id === activeModuleId);
+        if (module) { level = module.quiz.difficulty; $('level').value = level; }
+        renderQuiz();
+      });
+      $('startQuiz').addEventListener('click', () => { startRound(); if (round.length) drawQuestion(); else renderQuiz(); });
+      init();
+    </script>
+  </body>
+</html>
